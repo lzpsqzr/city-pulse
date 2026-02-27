@@ -258,7 +258,8 @@ function fetchResaleProperties() {
   return properties;
 }
 
-// Select best new properties based on user preferences
+// Selection algorithm for property recommendations
+// Factors: location priority, unit price range, total budget fit
 function selectBestProperties(properties) {
   const scored = properties.map(p => {
     let score = 0;

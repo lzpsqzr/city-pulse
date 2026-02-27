@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-27T09:50:21.787Z",
+  "updatedAt": "2026-02-27T09:57:23.490Z",
   "city": "上海",
   "metrics": {
     "resale": {
@@ -179,16 +179,28 @@
   ],
   "resaleProperties": [
     {
-      "community": "政立路545弄小区",
-      "title": "政立路545弄 2室2厅 60.85平",
-      "url": "https://sh.esf.fang.com/chushou/3_432187996.htm",
-      "totalPrice": 340,
-      "unitPrice": 55875,
-      "layout": "2室2厅",
-      "area": 60.85,
+      "community": "水电新村",
+      "title": "水电新村 2室1厅 68.57平",
+      "url": "https://sh.esf.fang.com/chushou/3_432124633.htm",
+      "totalPrice": 230,
+      "unitPrice": 33542,
+      "layout": "2室1厅",
+      "area": 68.57,
       "district": "杨浦",
       "areaName": "新江湾城",
-      "address": "政立路545弄"
+      "address": "水电新村"
+    },
+    {
+      "community": "正文花园二期",
+      "title": "正文花园(二期) 3室2厅 144.81平",
+      "url": "https://sh.esf.fang.com/chushou/3_431955292.htm",
+      "totalPrice": 599,
+      "unitPrice": 41364,
+      "layout": "3室2厅",
+      "area": 144.81,
+      "district": "杨浦",
+      "areaName": "新江湾城",
+      "address": "政立路1585弄"
     },
     {
       "community": "新江湾城时代花园",
@@ -203,25 +215,13 @@
       "address": "殷行路850弄"
     },
     {
-      "community": "新江湾城时代花园",
-      "title": "新江湾时代花园 2室2厅 88.13平",
-      "url": "https://sh.esf.fang.com/chushou/3_432090069.htm",
-      "totalPrice": 540,
-      "unitPrice": 61273,
-      "layout": "2室2厅",
-      "area": 88.13,
-      "district": "杨浦",
-      "areaName": "新江湾城",
-      "address": "殷行路850弄"
-    },
-    {
       "community": "合生江湾国际公寓",
-      "title": "合生江湾国际公寓 2室2厅 93.03平",
-      "url": "https://sh.esf.fang.com/chushou/3_432116749.htm",
-      "totalPrice": 655,
-      "unitPrice": 70407,
-      "layout": "2室2厅",
-      "area": 93.03,
+      "title": "合生江湾国际公寓 3室1厅 91.42平",
+      "url": "https://sh.esf.fang.com/chushou/3_431186138.htm",
+      "totalPrice": 700,
+      "unitPrice": 76569,
+      "layout": "3室1厅",
+      "area": 91.42,
       "district": "杨浦",
       "areaName": "新江湾城",
       "address": "政和路999弄"
