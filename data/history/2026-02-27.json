@@ -1,0 +1,43 @@
+{
+  "updatedAt": "2026-02-27T08:45:37.910Z",
+  "city": "上海",
+  "metrics": {
+    "resale": {
+      "avgPrice": 51750,
+      "unit": "元/平米",
+      "change": null
+    },
+    "new": {
+      "avgPrice": 72740,
+      "unit": "元/平米",
+      "change": -0.93
+    }
+  },
+  "districts": [
+    {
+      "name": "黄浦",
+      "price": 99502,
+      "change": -0.72
+    },
+    {
+      "name": "徐汇",
+      "price": 92597,
+      "change": -0.63
+    },
+    {
+      "name": "静安",
+      "price": 73926,
+      "change": -0.51
+    },
+    {
+      "name": "长宁",
+      "price": 73146,
+      "change": -0.79
+    },
+    {
+      "name": "虹口",
+      "price": 59660,
+      "change": -1.08
+    }
+  ]
+}

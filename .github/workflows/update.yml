@@ -1,0 +1,54 @@
+name: Update Data
+
+on:
+  schedule:
+    # Run at 2:00 AM UTC (10:00 AM Beijing Time) every day
+    - cron: '0 2 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Run data collector
+        run: node scripts/fetch.js
+      
+      - name: Update history index
+        run: |
+          cd data/history
+          ls -1 *.json | sort > ../history-index.txt
+          cd ..
+          mv history-index.txt history/index.json
+          # Format as JSON array
+          sed -i 's/^/"/' history/index.json
+          sed -i 's/$/"/' history/index.json
+          sed -i ':a;N;$!ba;s/\n/,/g' history/index.json
+          echo "[$(cat history/index.json)]" > history/index.json
+          rm -f history-index.txt
+      
+      - name: Commit changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add -A
+          git diff --quiet && git diff --staged --quiet || git commit -m "chore: update data $(date '+%Y-%m-%d')"
+      
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main

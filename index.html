@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>City Pulse - 城市脉搏</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      min-height: 100vh;
+      color: #e0e0e0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      background: linear-gradient(90deg, #00d4ff, #7c3aed);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: #888;
+      font-size: 1rem;
+    }
+
+    .update-time {
+      color: #666;
+      font-size: 0.85rem;
+      margin-top: 10px;
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+
+    .metric-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 25px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .metric-card h3 {
+      color: #888;
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+      font-weight: normal;
+    }
+
+    .metric-value {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .metric-unit {
+      font-size: 1rem;
+      color: #888;
+      margin-left: 5px;
+    }
+
+    .metric-change {
+      margin-top: 10px;
+      font-size: 0.9rem;
+    }
+
+    .metric-change.up {
+      color: #ef4444;
+    }
+
+    .metric-change.down {
+      color: #22c55e;
+    }
+
+    .section {
+      margin: 40px 0;
+    }
+
+    .section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .districts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    .district-card {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 12px;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .district-name {
+      font-weight: 500;
+    }
+
+    .district-price {
+      text-align: right;
+    }
+
+    .district-price .value {
+      font-weight: bold;
+      color: #00d4ff;
+    }
+
+    .district-price .change {
+      font-size: 0.8rem;
+      margin-left: 8px;
+    }
+
+    .district-price .change.up {
+      color: #ef4444;
+    }
+
+    .district-price .change.down {
+      color: #22c55e;
+    }
+
+    .chart-container {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 16px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: #666;
+      font-size: 0.85rem;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 60px;
+      color: #666;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+      
+      .metric-value {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🏙️ City Pulse</h1>
+      <p class="subtitle">城市生活指标追踪</p>
+      <p class="update-time" id="updateTime">加载中...</p>
+    </header>
+
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <h3>二手参考均价</h3>
+        <span class="metric-value" id="resalePrice">--</span>
+        <span class="metric-unit">元/㎡</span>
+        <div class="metric-change" id="resaleChange"></div>
+      </div>
+      <div class="metric-card">
+        <h3>新房参考均价</h3>
+        <span class="metric-value" id="newPrice">--</span>
+        <span class="metric-unit">元/㎡</span>
+        <div class="metric-change" id="newChange"></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📍 区域排行</h2>
+      <div class="districts-grid" id="districtsGrid">
+        <div class="loading">加载中...</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📈 历史趋势</h2>
+      <div class="chart-container">
+        <canvas id="trendChart"></canvas>
+      </div>
+    </div>
+
+    <footer>
+      <p>数据仅供参考 · 每日更新</p>
+    </footer>
+  </div>
+
+  <script>
+    // Format number with commas
+    function formatNumber(num) {
+      return num ? num.toLocaleString() : '--';
+    }
+
+    // Format change percentage
+    function formatChange(change) {
+      if (change === null || change === undefined) return '';
+      const sign = change > 0 ? '+' : '';
+      const cls = change > 0 ? 'up' : change < 0 ? 'down' : '';
+      return `<span class="change ${cls}">${sign}${change}%</span>`;
+    }
+
+    // Load and display data
+    async function loadData() {
+      try {
+        const response = await fetch('data/latest.json');
+        const data = await response.json();
+
+        // Update time
+        document.getElementById('updateTime').textContent = 
+          `更新于 ${new Date(data.updatedAt).toLocaleString('zh-CN')}`;
+
+        // Update metrics
+        document.getElementById('resalePrice').textContent = 
+          formatNumber(data.metrics.resale.avgPrice);
+        
+        document.getElementById('newPrice').textContent = 
+          formatNumber(data.metrics.new.avgPrice);
+        
+        const newChange = data.metrics.new.change;
+        const changeEl = document.getElementById('newChange');
+        if (newChange !== null) {
+          changeEl.innerHTML = `环比上月 ${newChange > 0 ? '↑' : '↓'} ${Math.abs(newChange)}%`;
+          changeEl.className = `metric-change ${newChange > 0 ? 'up' : 'down'}`;
+        }
+
+        // Update districts
+        const districtsGrid = document.getElementById('districtsGrid');
+        if (data.districts && data.districts.length > 0) {
+          districtsGrid.innerHTML = data.districts
+            .sort((a, b) => b.price - a.price)
+            .map(d => `
+              <div class="district-card">
+                <span class="district-name">${d.name}</span>
+                <div class="district-price">
+                  <span class="value">${formatNumber(d.price)}</span>
+                  ${formatChange(d.change)}
+                </div>
+              </div>
+            `).join('');
+        }
+
+        // Load history for chart
+        await loadChart();
+
+      } catch (error) {
+        console.error('Failed to load data:', error);
+        document.getElementById('districtsGrid').innerHTML = 
+          '<div class="loading">数据加载失败</div>';
+      }
+    }
+
+    // Load and render trend chart
+    async function loadChart() {
+      try {
+        // Try to load history index
+        const historyResponse = await fetch('data/history/index.json');
+        const historyFiles = await historyResponse.json();
+        
+        const dataPoints = [];
+        
+        for (const file of historyFiles.slice(-30)) { // Last 30 days
+          try {
+            const dayResponse = await fetch(`data/history/${file}`);
+            const dayData = await dayResponse.json();
+            dataPoints.push({
+              date: file.replace('.json', ''),
+              resale: dayData.metrics.resale.avgPrice,
+              new: dayData.metrics.new.avgPrice
+            });
+          } catch (e) {
+            // Skip failed files
+          }
+        }
+
+        if (dataPoints.length > 1) {
+          renderChart(dataPoints);
+        }
+      } catch (error) {
+        // No history yet, that's ok
+        console.log('No history data yet');
+      }
+    }
+
+    // Render Chart.js chart
+    function renderChart(dataPoints) {
+      const ctx = document.getElementById('trendChart').getContext('2d');
+      
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: dataPoints.map(d => d.date.slice(5)), // MM-DD
+          datasets: [
+            {
+              label: '二手均价',
+              data: dataPoints.map(d => d.resale),
+              borderColor: '#00d4ff',
+              backgroundColor: 'rgba(0, 212, 255, 0.1)',
+              tension: 0.3,
+              fill: true
+            },
+            {
+              label: '新房均价',
+              data: dataPoints.map(d => d.new),
+              borderColor: '#7c3aed',
+              backgroundColor: 'rgba(124, 58, 237, 0.1)',
+              tension: 0.3,
+              fill: true
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              labels: { color: '#888' }
+            }
+          },
+          scales: {
+            x: {
+              ticks: { color: '#666' },
+              grid: { color: 'rgba(255,255,255,0.05)' }
+            },
+            y: {
+              ticks: { 
+                color: '#666',
+                callback: value => value.toLocaleString()
+              },
+              grid: { color: 'rgba(255,255,255,0.05)' }
+            }
+          }
+        }
+      });
+    }
+
+    // Initialize
+    loadData();
+  </script>
+</body>
+</html>
