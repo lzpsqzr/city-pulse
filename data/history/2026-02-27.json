@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-27T09:23:05.185Z",
+  "updatedAt": "2026-02-27T09:41:19.751Z",
   "city": "上海",
   "metrics": {
     "resale": {
@@ -67,7 +67,6 @@
   ],
   "newProperties": [
     {
-      "newcode": "1210202158",
       "name": "保利·虹桥和著",
       "url": "https://sh.newhouse.fang.com/loupan/1210202158.htm",
       "district": "嘉定",
@@ -79,7 +78,6 @@
       "status": "在售"
     },
     {
-      "newcode": "1210222840",
       "name": "保利·都汇和煦",
       "url": "https://sh.newhouse.fang.com/loupan/1210222840.htm",
       "district": "闵行",
@@ -91,7 +89,6 @@
       "status": "在售"
     },
     {
-      "newcode": "1210201772",
       "name": "张江金茂府",
       "url": "https://sh.newhouse.fang.com/loupan/1210201772.htm",
       "district": "浦东",
@@ -103,7 +100,6 @@
       "status": "在售"
     },
     {
-      "newcode": "1210193876",
       "name": "保利·光合上城/跃城",
       "url": "https://sh.newhouse.fang.com/loupan/1210193876.htm",
       "district": "闵行",
@@ -115,7 +111,6 @@
       "status": "在售"
     },
     {
-      "newcode": "1210222430",
       "name": "保利虹桥和颂·西岸",
       "url": "https://sh.newhouse.fang.com/loupan/1210222430.htm",
       "district": "青浦",
@@ -127,7 +122,6 @@
       "status": "在售"
     },
     {
-      "newcode": "1210222862",
       "name": "保利·外滩曜",
       "url": "https://sh.newhouse.fang.com/loupan/1210222862.htm",
       "district": "杨浦",
@@ -139,7 +133,6 @@
       "status": "在售"
     },
     {
-      "newcode": "1210223102",
       "name": "中建壹品·外滩元境",
       "url": "https://sh.newhouse.fang.com/loupan/1210223102.htm",
       "district": "杨浦",
@@ -151,7 +144,6 @@
       "status": "在售"
     },
     {
-      "newcode": "1210220086",
       "name": "建发海宸",
       "url": "https://sh.newhouse.fang.com/loupan/1210220086.htm",
       "district": "杨浦",
@@ -163,7 +155,6 @@
       "status": "在售"
     },
     {
-      "newcode": "1210209274",
       "name": "江湾金茂府",
       "url": "https://sh.newhouse.fang.com/loupan/1210209274.htm",
       "district": "宝山",
@@ -175,7 +166,6 @@
       "status": "在售"
     },
     {
-      "newcode": "1210209276",
       "name": "招商序",
       "url": "https://sh.newhouse.fang.com/loupan/1210209276.htm",
       "district": "宝山",
@@ -185,6 +175,44 @@
       "totalPrice": null,
       "layout": "三居/ 四居 —100~143平米",
       "status": "在售"
+    }
+  ],
+  "resaleProperties": [
+    {
+      "community": "水电新村",
+      "title": "水电新村 2室1厅 42.26平",
+      "url": "https://sh.esf.fang.com/chushou/3_432124629.htm",
+      "totalPrice": 119,
+      "unitPrice": 28159,
+      "layout": "2室1厅",
+      "area": 42.26,
+      "district": "杨浦",
+      "areaName": "新江湾城",
+      "address": "水电新村"
+    },
+    {
+      "community": "水电新村",
+      "title": "水电新村 2室1厅 68.57平",
+      "url": "https://sh.esf.fang.com/chushou/3_432124647.htm",
+      "totalPrice": 238,
+      "unitPrice": 34709,
+      "layout": "2室1厅",
+      "area": 68.57,
+      "district": "杨浦",
+      "areaName": "新江湾城",
+      "address": "水电新村"
+    },
+    {
+      "community": "新江湾城时代花园",
+      "title": "新江湾时代花园 2室1厅 86.54平",
+      "url": "https://sh.esf.fang.com/chushou/3_432112501.htm",
+      "totalPrice": 540,
+      "unitPrice": 62398,
+      "layout": "2室2厅",
+      "area": 86.54,
+      "district": "杨浦",
+      "areaName": "新江湾城",
+      "address": "殷行路850弄"
     }
   ]
 }

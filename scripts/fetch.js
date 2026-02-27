@@ -15,7 +15,7 @@ const HISTORY_DIR = path.join(DATA_DIR, 'history');
 // User preferences for property selection
 const PREFERENCES = {
   // 优先区域（按优先级排序）
-  priorityAreas: ['新江湾', '杨浦', '内环', '中环', '中外环', '中内环'],
+  priorityAreas: ['新江湾城', '新江湾', '杨浦', '内环', '中环', '中外环', '中内环'],
   // 最高总价（万）
   maxTotalPrice: 700,
   // 单价范围（元/㎡）
@@ -28,7 +28,7 @@ const PREFERENCES = {
 // Fetch HTML using curl
 function fetchHTML(url) {
   try {
-    const html = execSync(`curl -s '${url}' -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'`, {
+    const html = execSync(`curl -s --compressed '${url}' -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'`, {
       encoding: 'utf-8',
       maxBuffer: 50 * 1024 * 1024
     });
@@ -55,7 +55,8 @@ function parseFangjiaHTML(html) {
       new: { avgPrice: null, unit: '元/平米', change: null }
     },
     districts: [],
-    newProperties: []
+    newProperties: [],
+    resaleProperties: []
   };
 
   // Extract resale average price
@@ -108,18 +109,14 @@ function fetchNewProperties() {
     console.log('   Fetching new property listings...');
     const html = fetchHTML('https://sh.newhouse.fang.com/house/s/');
     
-    // Parse property listings
-    // Pattern: <li id="lp_XXXXXX">...<a href="...loupan/XXXXXX.htm">楼盘名</a>...
-    //          ...[区域位置]...<span>价格</span><em>元/㎡</em>...
-    
+    // Parse property listings from <li> elements
     const liPattern = /<li id="lp_(\d+)"[\s\S]*?<\/li>/g;
     let liMatch;
     
     while ((liMatch = liPattern.exec(html)) !== null) {
       const liHtml = liMatch[0];
       
-      // Extract property ID and URL
-      const newcode = liMatch[1];
+      // Extract property URL
       const urlMatch = liHtml.match(/href="(https:\/\/sh\.newhouse\.fang\.com\/loupan\/\d+\.htm)"/);
       if (!urlMatch) continue;
       const url = urlMatch[1];
@@ -129,10 +126,10 @@ function fetchNewProperties() {
       if (!nameMatch) continue;
       const name = nameMatch[1].trim();
       
-      // Extract location (区域 + 位置)
+      // Extract location (ringLocation like 内环以内, 中外环间)
       const locMatch = liHtml.match(/\[([^\]]+)\]([^<]+)/);
       if (!locMatch) continue;
-      const ringLocation = locMatch[1].trim(); // 如：内环以内、中外环间
+      const ringLocation = locMatch[1].trim();
       const address = locMatch[2].trim();
       
       // Extract district
@@ -152,13 +149,12 @@ function fetchNewProperties() {
       const layoutMatch = liHtml.match(/(<a[^>]*>[\u4e00-\u9fa5]+<\/a>\s*\/?\s*)+—[\d~]+平米/);
       const layout = layoutMatch ? layoutMatch[0].replace(/<[^>]+>/g, '').trim() : '';
       
-      // Extract status (在售/待售)
+      // Extract status
       const statusMatch = liHtml.match(/<span class="(\w+)Sale">/);
       const status = statusMatch ? (statusMatch[1] === 'in' ? '在售' : statusMatch[1] === 'for' ? '待售' : '售完') : '';
       
       if (unitPrice && status === '在售') {
         properties.push({
-          newcode,
           name,
           url,
           district,
@@ -172,7 +168,7 @@ function fetchNewProperties() {
       }
     }
     
-    console.log(`   Found ${properties.length} properties in total\n`);
+    console.log(`   Found ${properties.length} new properties in total\n`);
     
   } catch (error) {
     console.error(`   ⚠️ Failed to fetch new properties: ${error.message}`);
@@ -181,9 +177,87 @@ function fetchNewProperties() {
   return properties;
 }
 
-// Select best properties based on user preferences
+// Fetch resale properties from esf.fang.com
+function fetchResaleProperties() {
+  const properties = [];
+  
+  try {
+    console.log('   Fetching resale properties (新江湾城, <700万)...');
+    
+    // Fetch from 新江湾城 area (杨浦)
+    const html = fetchHTML('https://sh.esf.fang.com/house-a026-b01651/');
+    
+    // Parse property listings - find all <dl class="clearfix"> elements
+    const dlPattern = /<dl class="clearfix[^"]*"[^>]*data-bg="[^"]*"[^>]*>([\s\S]*?)<\/dl>/g;
+    let dlMatch;
+    
+    while ((dlMatch = dlPattern.exec(html)) !== null) {
+      const dlHtml = dlMatch[1];
+      
+      // Extract URL
+      const urlMatch = dlHtml.match(/href="(\/chushou\/3_\d+\.htm)"/);
+      if (!urlMatch) continue;
+      const url = 'https://sh.esf.fang.com' + urlMatch[1];
+      
+      // Extract community name - more flexible pattern
+      const communityMatch = dlHtml.match(/<a target="_blank" href="\/house-xm\d+\/"[^>]*>([^<]+)<\/a>/);
+      if (!communityMatch) continue;
+      const community = communityMatch[1].trim();
+      
+      // Extract title/description
+      const titleMatch = dlHtml.match(/<span class="tit_shop">\s*([^<]+)<\/span>/);
+      const title = titleMatch ? titleMatch[1].trim() : '';
+      
+      // Extract layout and area (e.g., "4室2厅 | 89㎡")
+      const layoutMatch = dlHtml.match(/(\d室\d厅)\s*<i>\|<\/i>\s*([\d.]+)㎡/);
+      if (!layoutMatch) continue;
+      const layout = layoutMatch[1];
+      const area = parseFloat(layoutMatch[2]);
+      
+      // Extract total price
+      const priceMatch = dlHtml.match(/<b>(\d+)<\/b>万/);
+      if (!priceMatch) continue;
+      const totalPrice = parseInt(priceMatch[1]);
+      
+      // Only keep properties under 700万
+      if (totalPrice > PREFERENCES.maxTotalPrice) continue;
+      
+      // Extract unit price
+      const unitPriceMatch = dlHtml.match(/(\d+)元\/㎡/);
+      const unitPrice = unitPriceMatch ? parseInt(unitPriceMatch[1]) : Math.round(totalPrice * 10000 / area);
+      
+      // Extract address
+      const addressMatch = dlHtml.match(/<span>新江湾城\s*([^<]+)<\/span>/);
+      const address = addressMatch ? addressMatch[1].trim() : '';
+      
+      // All properties from this URL are in 新江湾城
+      properties.push({
+        community,
+        title,
+        url,
+        totalPrice,
+        unitPrice,
+        layout,
+        area,
+        district: '杨浦',
+        areaName: '新江湾城',
+        address: address || '新江湾城'
+      });
+      
+      if (properties.length >= 20) break; // Limit to 20 properties
+    }
+    
+    console.log(`   Found ${properties.length} resale properties under ${PREFERENCES.maxTotalPrice}万\n`);
+    
+  } catch (error) {
+    console.error(`   ⚠️ Failed to fetch resale properties: ${error.message}`);
+  }
+  
+  return properties;
+}
+
+// Select best new properties based on user preferences
 function selectBestProperties(properties) {
-  // 计算每个楼盘的优先级分数
   const scored = properties.map(p => {
     let score = 0;
     
@@ -216,11 +290,17 @@ function selectBestProperties(properties) {
     return { ...p, score };
   });
   
-  // 按分数排序，取前 N 个
   return scored
     .sort((a, b) => b.score - a.score)
     .slice(0, PREFERENCES.maxProperties)
-    .map(({ score, ...p }) => p); // 移除 score 字段
+    .map(({ score, ...p }) => p);
+}
+
+// Select best resale properties (sort by price, prefer lower unit price)
+function selectBestResaleProperties(properties) {
+  return properties
+    .sort((a, b) => a.unitPrice - b.unitPrice) // Lower unit price first (better value)
+    .slice(0, 8);
 }
 
 // Main function
@@ -240,9 +320,15 @@ async function main() {
     
     // Fetch new properties with selection
     console.log('📡 Fetching new properties (prioritizing your preferences)...');
-    const allProperties = fetchNewProperties();
-    data.newProperties = selectBestProperties(allProperties);
-    console.log(`   Selected top ${data.newProperties.length} properties based on preferences\n`);
+    const allNewProperties = fetchNewProperties();
+    data.newProperties = selectBestProperties(allNewProperties);
+    console.log(`   Selected top ${data.newProperties.length} new properties\n`);
+    
+    // Fetch resale properties
+    console.log('📡 Fetching resale properties (新江湾城, <700万)...');
+    const allResaleProperties = fetchResaleProperties();
+    data.resaleProperties = selectBestResaleProperties(allResaleProperties);
+    console.log(`   Selected top ${data.resaleProperties.length} resale properties\n`);
     
     // Display results
     console.log('\n📊 Results:');
@@ -266,7 +352,13 @@ async function main() {
           ? `${p.totalPrice}万起 (${p.unitPrice.toLocaleString()}元/㎡)`
           : `${p.unitPrice.toLocaleString()}元/㎡`;
         console.log(`   ${i + 1}. [${p.ringLocation}] ${p.district} - ${p.name}: ${priceStr}`);
-        console.log(`      ${p.layout} | ${p.address.slice(0, 30)}...`);
+      });
+    }
+
+    if (data.resaleProperties.length > 0) {
+      console.log('\n   精选二手房推荐 (新江湾城, <700万, 按性价比排序):');
+      data.resaleProperties.forEach((p, i) => {
+        console.log(`   ${i + 1}. [${p.areaName}] ${p.community}: ${p.totalPrice}万 (${p.unitPrice.toLocaleString()}元/㎡) - ${p.layout} ${p.area}㎡`);
       });
     }
 

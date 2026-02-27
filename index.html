@@ -142,8 +142,15 @@
     </div>
 
     <div class="section">
-      <h2>🏠 精选新房推荐 <span style="font-size:0.8em;color:#888;font-weight:normal">(按偏好排序)</span></h2>
+      <h2>🏗️ 精选新房推荐 <span style="font-size:0.8em;color:#888;font-weight:normal">(按偏好排序)</span></h2>
       <div class="properties-grid" id="newPropertiesGrid">
+        <div class="loading">加载中...</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>🏘️ 精选二手房推荐 <span style="font-size:0.8em;color:#888;font-weight:normal">(新江湾城, <700万)</span></h2>
+      <div class="properties-grid" id="resalePropertiesGrid">
         <div class="loading">加载中...</div>
       </div>
     </div>
@@ -234,6 +241,27 @@
           }).join('');
         } else {
           newPropsGrid.innerHTML = '<div class="loading">暂无新房数据</div>';
+        }
+
+        // Update resale properties
+        const resalePropsGrid = document.getElementById('resalePropertiesGrid');
+        if (data.resaleProperties && data.resaleProperties.length > 0) {
+          resalePropsGrid.innerHTML = data.resaleProperties.map((p, i) => {
+            return `
+              <div class="property-card">
+                <div class="property-location">
+                  <span style="background:linear-gradient(90deg,#f59e0b,#ef4444);color:#fff;padding:2px 8px;border-radius:4px;font-size:0.75em;margin-right:8px;">性价比 ${i + 1}</span>
+                  ${p.areaName} · ${p.district}
+                </div>
+                <div class="property-name"><a href="${p.url}" target="_blank">${p.community}</a></div>
+                <div class="property-price">${p.totalPrice}万 <span>(${formatNumber(p.unitPrice)}元/㎡)</span></div>
+                <div class="property-layout">${p.layout} · ${p.area}㎡</div>
+                <div style="color:#666;font-size:0.85rem;margin-top:8px;">📍 ${p.address}</div>
+              </div>
+            `;
+          }).join('');
+        } else {
+          resalePropsGrid.innerHTML = '<div class="loading">暂无符合条件的二手房</div>';
         }
 
         // Load history for chart
