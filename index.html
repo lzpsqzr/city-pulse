@@ -142,7 +142,7 @@
     </div>
 
     <div class="section">
-      <h2>🏠 新房在售楼盘</h2>
+      <h2>🏠 精选新房推荐 <span style="font-size:0.8em;color:#888;font-weight:normal">(按偏好排序)</span></h2>
       <div class="properties-grid" id="newPropertiesGrid">
         <div class="loading">加载中...</div>
       </div>
@@ -215,14 +215,23 @@
         // Update new properties
         const newPropsGrid = document.getElementById('newPropertiesGrid');
         if (data.newProperties && data.newProperties.length > 0) {
-          newPropsGrid.innerHTML = data.newProperties.map(p => `
-            <div class="property-card">
-              <div class="property-location">${p.location}</div>
-              <div class="property-name"><a href="${p.url}" target="_blank">${p.location.split(' - ')[1] || p.location}</a></div>
-              <div class="property-price">${formatNumber(p.price)}<span> 元/㎡</span></div>
-              <div class="property-layout">${p.layout}</div>
-            </div>
-          `).join('');
+          newPropsGrid.innerHTML = data.newProperties.map((p, i) => {
+            const priceStr = p.totalPrice 
+              ? `${p.totalPrice}万起 (${formatNumber(p.unitPrice)}元/㎡)`
+              : `${formatNumber(p.unitPrice)}元/㎡`;
+            return `
+              <div class="property-card">
+                <div class="property-location">
+                  <span style="background:linear-gradient(90deg,#7c3aed,#00d4ff);color:#fff;padding:2px 8px;border-radius:4px;font-size:0.75em;margin-right:8px;">TOP ${i + 1}</span>
+                  ${p.ringLocation ? `[${p.ringLocation}] ` : ''}${p.district} - ${p.name}
+                </div>
+                <div class="property-name"><a href="${p.url}" target="_blank">查看详情 →</a></div>
+                <div class="property-price">${priceStr}</div>
+                <div class="property-layout">${p.layout}</div>
+                <div style="color:#666;font-size:0.85rem;margin-top:8px;">📍 ${p.address || ''}</div>
+              </div>
+            `;
+          }).join('');
         } else {
           newPropsGrid.innerHTML = '<div class="loading">暂无新房数据</div>';
         }
