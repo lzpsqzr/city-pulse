@@ -130,7 +130,9 @@ function fetchNewProperties() {
       const locMatch = liHtml.match(/\[([^\]]+)\]([^<]+)/);
       if (!locMatch) continue;
       const ringLocation = locMatch[1].trim();
-      const address = locMatch[2].trim();
+      let address = locMatch[2].trim();
+      // Clean up address - remove HTML artifacts
+      address = address.replace(/"\s*target="_blank".*$/g, '').trim();
       
       // Extract district
       const districtMatch = liHtml.match(/<span class="sngrey">\s*\[([^\]]+)\]/);
