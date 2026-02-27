@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-27T09:13:16.519Z",
+  "updatedAt": "2026-02-27T09:21:53.992Z",
   "city": "上海",
   "metrics": {
     "resale": {
@@ -67,29 +67,124 @@
   ],
   "newProperties": [
     {
-      "location": "北外滩 - 外滩瑞府",
-      "url": "https://sh.newhouse.fang.com/loupan/1210207566.htm",
-      "price": 148500,
-      "layout": "三居/四居 124.0-240.0m²"
+      "newcode": "1210202158",
+      "name": "保利·虹桥和著",
+      "url": "https://sh.newhouse.fang.com/loupan/1210202158.htm",
+      "district": "嘉定",
+      "ringLocation": "外环以外",
+      "address": "嘉定曹安公路14号线封浜地铁站3号口东侧约200米\" target=\"_blank\" href=\"https://sh.newhouse.fang.com/loupan/1210202158.htm#detail_map\">",
+      "unitPrice": 58000,
+      "totalPrice": 570,
+      "layout": "三居/ 四居 —104~128平米",
+      "status": "在售"
     },
     {
-      "location": "张江 - 张江金茂府",
+      "newcode": "1210222840",
+      "name": "保利·都汇和煦",
+      "url": "https://sh.newhouse.fang.com/loupan/1210222840.htm",
+      "district": "闵行",
+      "ringLocation": "外环以外",
+      "address": "闵行东至都庄路,南至01-22a-07地块(近六磊塘),西至01-22a-07地块,北至01-22a-0\" target=\"_blank\" href=\"https://sh.newhouse.fang.com/loupan/1210222840.htm#detail_map\">",
+      "unitPrice": 69888,
+      "totalPrice": 685,
+      "layout": "三居/ 四居 —98~125平米",
+      "status": "在售"
+    },
+    {
+      "newcode": "1210201772",
+      "name": "张江金茂府",
       "url": "https://sh.newhouse.fang.com/loupan/1210201772.htm",
-      "price": 69019,
-      "layout": "三居/四居 92.0-216.0m²"
+      "district": "浦东",
+      "ringLocation": "外环以外",
+      "address": "浦东上海市浦东新区秀宁路88弄\" target=\"_blank\" href=\"https://sh.newhouse.fang.com/loupan/1210201772.htm#detail_map\">",
+      "unitPrice": 69019,
+      "totalPrice": 647,
+      "layout": "三居/ 四居 —92~216平米",
+      "status": "在售"
     },
     {
-      "location": "泗泾 - 招商时代潮派",
-      "url": "https://sh.newhouse.fang.com/loupan/1210201534.htm",
-      "price": 50105,
-      "layout": "三居/四居 89.0-127.0m²"
+      "newcode": "1210193876",
+      "name": "保利·光合上城/跃城",
+      "url": "https://sh.newhouse.fang.com/loupan/1210193876.htm",
+      "district": "闵行",
+      "ringLocation": "外环以外",
+      "address": "闵行兰莲路168弄\" target=\"_blank\" href=\"https://sh.newhouse.fang.com/loupan/1210193876.htm#detail_map\">",
+      "unitPrice": 69900,
+      "totalPrice": 600,
+      "layout": "三居/ 四居 —93~143平米",
+      "status": "在售"
     },
     {
-      "location": "象屿·江湾悦府",
-      "url": "https://sh.newhouse.fang.com/loupan/1210201396.htm",
-      "price": 36300,
-      "layout": "二居/三居/四居 76.0-143.0m²"
+      "newcode": "1210222430",
+      "name": "保利虹桥和颂·西岸",
+      "url": "https://sh.newhouse.fang.com/loupan/1210222430.htm",
+      "district": "青浦",
+      "ringLocation": "外环以外",
+      "address": "青浦福店路迅达路\" target=\"_blank\" href=\"https://sh.newhouse.fang.com/loupan/1210222430.htm#detail_map\">",
+      "unitPrice": 38920,
+      "totalPrice": 334,
+      "layout": "三居/ 四居 —91~139平米",
+      "status": "在售"
+    },
+    {
+      "newcode": "1210222862",
+      "name": "保利·外滩曜",
+      "url": "https://sh.newhouse.fang.com/loupan/1210222862.htm",
+      "district": "杨浦",
+      "ringLocation": "内环以内",
+      "address": "杨浦惠民路与许昌路交叉口\" target=\"_blank\" href=\"https://sh.newhouse.fang.com/loupan/1210222862.htm#detail_map\">",
+      "unitPrice": 135000,
+      "totalPrice": 1553,
+      "layout": "三居/ 四居 —115~139平米",
+      "status": "在售"
+    },
+    {
+      "newcode": "1210223102",
+      "name": "中建壹品·外滩元境",
+      "url": "https://sh.newhouse.fang.com/loupan/1210223102.htm",
+      "district": "杨浦",
+      "ringLocation": "中内环间",
+      "address": "杨浦东至三星南路、南至周家牌路,西至松潘路,北至杭州路\" target=\"_blank\" href=\"https://sh.newhouse.fang.com/loupan/1210223102.htm#detail_map\">",
+      "unitPrice": 128000,
+      "totalPrice": 1050,
+      "layout": "二居/ 三居/ 四居 —82~169平米",
+      "status": "在售"
+    },
+    {
+      "newcode": "1210220086",
+      "name": "建发海宸",
+      "url": "https://sh.newhouse.fang.com/loupan/1210220086.htm",
+      "district": "杨浦",
+      "ringLocation": "中外环间",
+      "address": "杨浦江湾城路与殷高东路交汇处\" target=\"_blank\" href=\"https://sh.newhouse.fang.com/loupan/1210220086.htm#detail_map\">",
+      "unitPrice": 121995,
+      "totalPrice": null,
+      "layout": "三居/ 四居 —105~210平米",
+      "status": "在售"
+    },
+    {
+      "newcode": "1210209274",
+      "name": "江湾金茂府",
+      "url": "https://sh.newhouse.fang.com/loupan/1210209274.htm",
+      "district": "宝山",
+      "ringLocation": "中外环间",
+      "address": "宝山淞发路与长江南路交汇处\" target=\"_blank\" href=\"https://sh.newhouse.fang.com/loupan/1210209274.htm#detail_map\">",
+      "unitPrice": 71530,
+      "totalPrice": null,
+      "layout": "三居/ 四居 —114~190平米",
+      "status": "在售"
+    },
+    {
+      "newcode": "1210209276",
+      "name": "招商序",
+      "url": "https://sh.newhouse.fang.com/loupan/1210209276.htm",
+      "district": "宝山",
+      "ringLocation": "中外环间",
+      "address": "宝山淞南镇长江路与御江巷路交叉路口(近18号线二期长江西路地铁口)\" target=\"_blank\" href=\"https://sh.newhouse.fang.com/loupan/1210209276.htm#detail_map\">",
+      "unitPrice": 68625,
+      "totalPrice": null,
+      "layout": "三居/ 四居 —100~143平米",
+      "status": "在售"
     }
-  ],
-  "resaleProperties": []
+  ]
 }

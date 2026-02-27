@@ -12,7 +12,20 @@ const DATA_DIR = path.join(__dirname, '..', 'data');
 const LATEST_FILE = path.join(DATA_DIR, 'latest.json');
 const HISTORY_DIR = path.join(DATA_DIR, 'history');
 
-// Fetch HTML using curl (more reliable for Chinese sites)
+// User preferences for property selection
+const PREFERENCES = {
+  // 优先区域（按优先级排序）
+  priorityAreas: ['新江湾', '杨浦', '内环', '中环', '中外环', '中内环'],
+  // 最高总价（万）
+  maxTotalPrice: 700,
+  // 单价范围（元/㎡）
+  minUnitPrice: 30000,
+  maxUnitPrice: 100000,
+  // 最多展示楼盘数
+  maxProperties: 10
+};
+
+// Fetch HTML using curl
 function fetchHTML(url) {
   try {
     const html = execSync(`curl -s '${url}' -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'`, {
@@ -25,7 +38,7 @@ function fetchHTML(url) {
   }
 }
 
-// Parse price value from text
+// Parse price value
 function parsePrice(text) {
   const cleaned = text.replace(/[,\s]/g, '');
   const num = parseFloat(cleaned);
@@ -42,8 +55,7 @@ function parseFangjiaHTML(html) {
       new: { avgPrice: null, unit: '元/平米', change: null }
     },
     districts: [],
-    newProperties: [],
-    resaleProperties: []
+    newProperties: []
   };
 
   // Extract resale average price
@@ -60,16 +72,12 @@ function parseFangjiaHTML(html) {
     data.metrics.new.change = newMatch[2] === '下跌' ? -change : change;
   }
 
-  // Extract ALL district prices from "上海二手房区县房价榜" section
-  // Format: <a href="/sh/a024/" target="_blank">黄浦</a><span class="pm-price">99502元/平</span>
-  // Followed by: <span>环比上月</span><span class="f12 pm-rate"> 0.72% <i ...>↓</i></span>
-  
+  // Extract ALL district prices
   const allDistricts = [
     '黄浦', '徐汇', '静安', '长宁', '虹口', '普陀', '杨浦', '闵行', '浦东', 
     '青浦', '宝山', '嘉定', '松江', '奉贤', '金山', '崇明'
   ];
   
-  // Match pattern for each district
   for (const district of allDistricts) {
     const pattern = new RegExp(
       `<a href="/sh/a\\d+/"[^>]*>${district}</a><span class="pm-price">(\\d[\\d,]*)元/平</span>[\\s\\S]*?` +
@@ -89,91 +97,130 @@ function parseFangjiaHTML(html) {
     }
   }
 
-  // Extract new property listings
-  // Format: <a href="https://sh.newhouse.fang.com/loupan/XXX.htm"...>区域 - 楼盘名</a>
-  //         <span class="price">XXX元/m²</span>
-  //         <em>户型信息</em>
-  const newPropPattern = /<a href="(https:\/\/sh\.newhouse\.fang\.com\/loupan\/\d+\.htm)"[^>]*title="([^"]+)"[^>]*>[\s\S]*?<span class="price">(\d[\d,]*)元\/m[²²]/g;
-  
-  let propMatch;
-  const seenProps = new Set();
-  
-  while ((propMatch = newPropPattern.exec(html)) !== null) {
-    const url = propMatch[1];
-    const location = propMatch[2].trim();
-    const price = parsePrice(propMatch[3]);
-    
-    if (price && !seenProps.has(url)) {
-      seenProps.add(url);
-      
-      // Extract layout info
-      const layoutMatch = html.slice(propMatch.index, propMatch.index + 500).match(/<em>([^<]+)<\/em>/);
-      const layout = layoutMatch ? layoutMatch[1].trim() : '';
-      
-      data.newProperties.push({ location, url, price, layout });
-    }
-  }
-
   return data;
 }
 
-// Fetch resale properties for specific areas
-async function fetchResaleProperties() {
+// Fetch new properties from list page and apply selection logic
+function fetchNewProperties() {
   const properties = [];
   
-  // Areas to fetch: 新江湾城 (杨浦), 内环, 中环
-  const areas = [
-    { url: 'https://sh.esf.fang.com/house-a026-b01651/', name: '新江湾城', district: '杨浦' },
-    { url: 'https://sh.esf.fang.com/house-a025/', name: '内环', district: '浦东' }
-  ];
-  
-  for (const area of areas) {
-    try {
-      console.log(`   Fetching ${area.name}...`);
-      const html = fetchHTML(area.url);
+  try {
+    console.log('   Fetching new property listings...');
+    const html = fetchHTML('https://sh.newhouse.fang.com/house/s/');
+    
+    // Parse property listings
+    // Pattern: <li id="lp_XXXXXX">...<a href="...loupan/XXXXXX.htm">楼盘名</a>...
+    //          ...[区域位置]...<span>价格</span><em>元/㎡</em>...
+    
+    const liPattern = /<li id="lp_(\d+)"[\s\S]*?<\/li>/g;
+    let liMatch;
+    
+    while ((liMatch = liPattern.exec(html)) !== null) {
+      const liHtml = liMatch[0];
       
-      // Parse property listings
-      // Format: <a href="//sh.esf.fang.com/chushou/3_XXX.htm"...>楼盘名</a>
-      //         <span class="price"><b>XXX</b>万</span>
-      //         <em>X室X厅/XXX㎡</em>
+      // Extract property ID and URL
+      const newcode = liMatch[1];
+      const urlMatch = liHtml.match(/href="(https:\/\/sh\.newhouse\.fang\.com\/loupan\/\d+\.htm)"/);
+      if (!urlMatch) continue;
+      const url = urlMatch[1];
       
-      const propPattern = /<a href="(\/\/sh\.esf\.fang\.com\/chushou\/[^"]+)"[^>]*title="[^"]*"[^>]*>([^<]+)<\/a>[\s\S]*?<span class="price"><b>(\d+)<\/b>万<\/span>[\s\S]*?<em>(\d室\d厅\/[\d.]+㎡)/g;
+      // Extract name
+      const nameMatch = liHtml.match(/<a target="_blank"[^>]*>([^<]+)<\/a>[\s\S]*?<\/div>[\s\S]*?<div class="house_type/);
+      if (!nameMatch) continue;
+      const name = nameMatch[1].trim();
       
-      let match;
-      let count = 0;
+      // Extract location (区域 + 位置)
+      const locMatch = liHtml.match(/\[([^\]]+)\]([^<]+)/);
+      if (!locMatch) continue;
+      const ringLocation = locMatch[1].trim(); // 如：内环以内、中外环间
+      const address = locMatch[2].trim();
       
-      while ((match = propPattern.exec(html)) !== null && count < 5) {
-        const url = 'https:' + match[1];
-        const name = match[2].trim();
-        const totalPrice = parseInt(match[3]);
-        const layout = match[4];
-        
-        // 只保留700万以下的
-        if (totalPrice <= 700) {
-          // 计算单价
-          const areaMatch = layout.match(/([\d.]+)㎡/);
-          const areaSize = areaMatch ? parseFloat(areaMatch[1]) : 0;
-          const unitPrice = areaSize > 0 ? Math.round(totalPrice * 10000 / areaSize) : null;
-          
-          properties.push({
-            name,
-            url,
-            totalPrice,
-            unitPrice,
-            layout,
-            district: area.district,
-            area: area.name
-          });
-        }
-        count++;
+      // Extract district
+      const districtMatch = liHtml.match(/<span class="sngrey">\s*\[([^\]]+)\]/);
+      const district = districtMatch ? districtMatch[1].trim() : '';
+      
+      // Extract price
+      const priceMatch = liHtml.match(/<span>(\d[\d,]*)<\/span><em>元\/㎡/);
+      const totalPriceMatch = liHtml.match(/(\d+)万元\/套起/);
+      
+      if (!priceMatch) continue;
+      
+      const unitPrice = parsePrice(priceMatch[1]);
+      const totalPrice = totalPriceMatch ? parseInt(totalPriceMatch[1]) : null;
+      
+      // Extract layout
+      const layoutMatch = liHtml.match(/(<a[^>]*>[\u4e00-\u9fa5]+<\/a>\s*\/?\s*)+—[\d~]+平米/);
+      const layout = layoutMatch ? layoutMatch[0].replace(/<[^>]+>/g, '').trim() : '';
+      
+      // Extract status (在售/待售)
+      const statusMatch = liHtml.match(/<span class="(\w+)Sale">/);
+      const status = statusMatch ? (statusMatch[1] === 'in' ? '在售' : statusMatch[1] === 'for' ? '待售' : '售完') : '';
+      
+      if (unitPrice && status === '在售') {
+        properties.push({
+          newcode,
+          name,
+          url,
+          district,
+          ringLocation,
+          address,
+          unitPrice,
+          totalPrice,
+          layout,
+          status
+        });
       }
-      
-    } catch (error) {
-      console.error(`   ⚠️ Failed to fetch ${area.name}: ${error.message}`);
     }
+    
+    console.log(`   Found ${properties.length} properties in total\n`);
+    
+  } catch (error) {
+    console.error(`   ⚠️ Failed to fetch new properties: ${error.message}`);
   }
   
   return properties;
+}
+
+// Select best properties based on user preferences
+function selectBestProperties(properties) {
+  // 计算每个楼盘的优先级分数
+  const scored = properties.map(p => {
+    let score = 0;
+    
+    // 区域优先级加分
+    for (let i = 0; i < PREFERENCES.priorityAreas.length; i++) {
+      if (p.ringLocation.includes(PREFERENCES.priorityAreas[i]) || 
+          p.district.includes(PREFERENCES.priorityAreas[i]) ||
+          p.address.includes(PREFERENCES.priorityAreas[i])) {
+        score += (PREFERENCES.priorityAreas.length - i) * 10;
+        break;
+      }
+    }
+    
+    // 价格在范围内加分
+    if (p.unitPrice >= PREFERENCES.minUnitPrice && p.unitPrice <= PREFERENCES.maxUnitPrice) {
+      score += 20;
+    }
+    
+    // 总价在预算内加分
+    if (p.totalPrice && p.totalPrice <= PREFERENCES.maxTotalPrice) {
+      score += 30;
+      // 越接近预算上限分数越高（性价比）
+      score += Math.floor((p.totalPrice / PREFERENCES.maxTotalPrice) * 10);
+    }
+    
+    // 价格越低额外加分（性价比）
+    if (p.unitPrice < 60000) score += 5;
+    else if (p.unitPrice < 80000) score += 3;
+    
+    return { ...p, score };
+  });
+  
+  // 按分数排序，取前 N 个
+  return scored
+    .sort((a, b) => b.score - a.score)
+    .slice(0, PREFERENCES.maxProperties)
+    .map(({ score, ...p }) => p); // 移除 score 字段
 }
 
 // Main function
@@ -191,11 +238,11 @@ async function main() {
     console.log('🔍 Parsing data...');
     const data = parseFangjiaHTML(html);
     
-    // Fetch resale properties
-    console.log('📡 Fetching resale properties (<700万)...');
-    const resaleProps = await fetchResaleProperties();
-    data.resaleProperties = resaleProps;
-    console.log(`   Found ${resaleProps.length} properties\n`);
+    // Fetch new properties with selection
+    console.log('📡 Fetching new properties (prioritizing your preferences)...');
+    const allProperties = fetchNewProperties();
+    data.newProperties = selectBestProperties(allProperties);
+    console.log(`   Selected top ${data.newProperties.length} properties based on preferences\n`);
     
     // Display results
     console.log('\n📊 Results:');
@@ -213,16 +260,13 @@ async function main() {
     }
 
     if (data.newProperties.length > 0) {
-      console.log('\n   新房推荐:');
-      data.newProperties.slice(0, 5).forEach((p, i) => {
-        console.log(`   ${i + 1}. ${p.location}: ${p.price.toLocaleString()} 元/㎡ - ${p.layout}`);
-      });
-    }
-
-    if (data.resaleProperties.length > 0) {
-      console.log('\n   二手房推荐 (<700万):');
-      data.resaleProperties.forEach((p, i) => {
-        console.log(`   ${i + 1}. [${p.area}] ${p.name}: ${p.totalPrice}万 (${p.unitPrice?.toLocaleString()}元/㎡) - ${p.layout}`);
+      console.log('\n   精选新房推荐 (按偏好排序):');
+      data.newProperties.forEach((p, i) => {
+        const priceStr = p.totalPrice 
+          ? `${p.totalPrice}万起 (${p.unitPrice.toLocaleString()}元/㎡)`
+          : `${p.unitPrice.toLocaleString()}元/㎡`;
+        console.log(`   ${i + 1}. [${p.ringLocation}] ${p.district} - ${p.name}: ${priceStr}`);
+        console.log(`      ${p.layout} | ${p.address.slice(0, 30)}...`);
       });
     }
 
