@@ -2,9 +2,8 @@ name: Update Data
 
 on:
   schedule:
-    # Run at 2:00 AM UTC (10:00 AM Beijing Time) every day
-    - cron: '0 2 * * *'
-  workflow_dispatch: # Allow manual trigger
+    - cron: '0 2 * * *'  # 10:00 AM Beijing Time
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -30,14 +29,16 @@ jobs:
       - name: Update history index
         run: |
           cd data/history
-          ls -1 *.json | sort > ../history-index.txt
+          ls -1 *.json 2>/dev/null | sort > ../history-index.txt || echo "" > ../history-index.txt
           cd ..
-          mv history-index.txt history/index.json
-          # Format as JSON array
-          sed -i 's/^/"/' history/index.json
-          sed -i 's/$/"/' history/index.json
-          sed -i ':a;N;$!ba;s/\n/,/g' history/index.json
-          echo "[$(cat history/index.json)]" > history/index.json
+          if [ -s history-index.txt ]; then
+            sed -i 's/^/"/' history-index.txt
+            sed -i 's/$/"/' history-index.txt
+            sed -i ':a;N;$!ba;s/\n/,/g' history-index.txt
+            echo "[$(cat history-index.txt)]" > history/index.json
+          else
+            echo "[]" > history/index.json
+          fi
           rm -f history-index.txt
       
       - name: Commit changes
@@ -45,7 +46,7 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add -A
-          git diff --quiet && git diff --staged --quiet || git commit -m "chore: update data $(date '+%Y-%m-%d')"
+          git diff --quiet && git diff --staged --quiet || git commit -m "chore: update data $(date '+%Y-%m-%d %H:%M')"
       
       - name: Push changes
         uses: ad-m/github-push-action@master
