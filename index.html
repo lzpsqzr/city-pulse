@@ -201,6 +201,14 @@
         document.getElementById('resalePrice').textContent = 
           formatNumber(data.metrics.resale.avgPrice);
         
+        // Show resale change if available
+        const resaleChange = data.metrics.resale.change;
+        const resaleChangeEl = document.getElementById('resaleChange');
+        if (resaleChange !== null && resaleChange !== undefined) {
+          resaleChangeEl.innerHTML = `环比上月 ${resaleChange > 0 ? '↑' : '↓'} ${Math.abs(resaleChange)}%`;
+          resaleChangeEl.className = `metric-change ${resaleChange > 0 ? 'up' : 'down'}`;
+        }
+        
         document.getElementById('newPrice').textContent = 
           formatNumber(data.metrics.new.avgPrice);
         

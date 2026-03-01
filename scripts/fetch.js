@@ -333,6 +333,27 @@ async function main() {
     data.resaleProperties = selectBestResaleProperties(allResaleProperties);
     console.log(`   Selected top ${data.resaleProperties.length} resale properties\n`);
     
+    // Calculate resale change from history
+    try {
+      const historyFile = path.join(HISTORY_DIR, `${new Date().toISOString().split('T')[0]}.json`);
+      const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
+      const yesterdayFile = path.join(HISTORY_DIR, `${yesterday}.json`);
+      
+      if (fs.existsSync(yesterdayFile)) {
+        const yesterdayData = JSON.parse(fs.readFileSync(yesterdayFile, 'utf-8'));
+        const yesterdayPrice = yesterdayData.metrics?.resale?.avgPrice;
+        const todayPrice = data.metrics.resale.avgPrice;
+        
+        if (yesterdayPrice && todayPrice) {
+          const change = ((todayPrice - yesterdayPrice) / yesterdayPrice * 100).toFixed(2);
+          data.metrics.resale.change = parseFloat(change);
+          console.log(`   Calculated resale change: ${change}% from yesterday\n`);
+        }
+      }
+    } catch (e) {
+      console.log(`   Could not calculate resale change: ${e.message}\n`);
+    }
+    
     // Display results
     console.log('\n📊 Results:');
     console.log(`   Updated: ${data.updatedAt}`);
