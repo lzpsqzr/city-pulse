@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-01T04:16:10.171Z",
+  "updatedAt": "2026-03-01T06:39:28.721Z",
   "city": "上海",
   "metrics": {
     "resale": {
@@ -8,9 +8,9 @@
       "change": null
     },
     "new": {
-      "avgPrice": null,
+      "avgPrice": 72829,
       "unit": "元/平米",
-      "change": null
+      "change": 0.12
     }
   },
   "districts": [
@@ -180,12 +180,12 @@
   "resaleProperties": [
     {
       "community": "水电新村",
-      "title": "水电新村 1室1厅 42.26平",
-      "url": "https://sh.esf.fang.com/chushou/3_432124635.htm",
-      "totalPrice": 128,
-      "unitPrice": 30288,
+      "title": "水电新村 1室1厅 43.33平",
+      "url": "https://sh.esf.fang.com/chushou/3_432124649.htm",
+      "totalPrice": 140,
+      "unitPrice": 32310,
       "layout": "1室1厅",
-      "area": 42.26,
+      "area": 43.33,
       "district": "杨浦",
       "areaName": "新江湾城",
       "address": "水电新村"
@@ -193,26 +193,14 @@
     {
       "community": "水电新村",
       "title": "水电新村 2室1厅 68.57平",
-      "url": "https://sh.esf.fang.com/chushou/3_432124647.htm",
-      "totalPrice": 238,
-      "unitPrice": 34709,
+      "url": "https://sh.esf.fang.com/chushou/3_432124633.htm",
+      "totalPrice": 230,
+      "unitPrice": 33542,
       "layout": "2室1厅",
       "area": 68.57,
       "district": "杨浦",
       "areaName": "新江湾城",
       "address": "水电新村"
-    },
-    {
-      "community": "政立苑",
-      "title": "标准复试 楼上面积一样 带30平露台 一梯两户得房率高",
-      "url": "https://sh.esf.fang.com/chushou/3_430283442.htm",
-      "totalPrice": 420,
-      "unitPrice": 46042,
-      "layout": "4室2厅",
-      "area": 91.22,
-      "district": "杨浦",
-      "areaName": "新江湾城",
-      "address": "政立路639弄"
     },
     {
       "community": "建设公寓",
@@ -227,52 +215,40 @@
       "address": "三门路480弄"
     },
     {
-      "community": "合生江湾国际公寓",
-      "title": "合生江湾国际 房东降价急售 带产权车位",
-      "url": "https://sh.esf.fang.com/chushou/3_430600325.htm",
-      "totalPrice": 550,
-      "unitPrice": 49981,
+      "community": "新江湾城雍景苑",
+      "title": "新上!一手底价老客户委托!精装修!边套全明!随时可看",
+      "url": "https://sh.esf.fang.com/chushou/3_430070784.htm",
+      "totalPrice": 700,
+      "unitPrice": 51383,
+      "layout": "3室2厅",
+      "area": 136.23,
+      "district": "杨浦",
+      "areaName": "新江湾城",
+      "address": "政悦路500弄"
+    },
+    {
+      "community": "政立路545弄小区",
+      "title": "政立路545弄 2室2厅 60.85平",
+      "url": "https://sh.esf.fang.com/chushou/3_432187996.htm",
+      "totalPrice": 340,
+      "unitPrice": 55875,
       "layout": "2室2厅",
-      "area": 110.04,
+      "area": 60.85,
       "district": "杨浦",
       "areaName": "新江湾城",
-      "address": "政和路999弄"
+      "address": "政立路545弄"
     },
     {
-      "community": "新江湾城时代花园",
-      "title": "新江湾时代花园 2室2厅 88.13平",
-      "url": "https://sh.esf.fang.com/chushou/3_432090069.htm",
-      "totalPrice": 540,
-      "unitPrice": 61273,
-      "layout": "2室2厅",
-      "area": 88.13,
+      "community": "书香银苑",
+      "title": "新江湾小洋房 中间位置 人车分流 近财大复旦",
+      "url": "https://sh.esf.fang.com/chushou/3_430600365.htm",
+      "totalPrice": 620,
+      "unitPrice": 67641,
+      "layout": "3室2厅",
+      "area": 91.66,
       "district": "杨浦",
       "areaName": "新江湾城",
-      "address": "殷行路850弄"
-    },
-    {
-      "community": "合生江湾国际公寓",
-      "title": "合生江湾国际公寓 1室1厅 65.8平",
-      "url": "https://sh.esf.fang.com/chushou/3_432116754.htm",
-      "totalPrice": 480,
-      "unitPrice": 72948,
-      "layout": "1室1厅",
-      "area": 65.8,
-      "district": "杨浦",
-      "areaName": "新江湾城",
-      "address": "政和路999弄"
-    },
-    {
-      "community": "信达泰禾上海院子公寓",
-      "title": "信达泰禾上海院子 1室2厅 66.22平",
-      "url": "https://sh.esf.fang.com/chushou/3_432112408.htm",
-      "totalPrice": 688,
-      "unitPrice": 103896,
-      "layout": "1室2厅",
-      "area": 66.22,
-      "district": "杨浦",
-      "areaName": "新江湾城",
-      "address": "江湾城路399弄"
+      "address": "政立路717弄"
     }
   ]
 }

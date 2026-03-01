@@ -60,13 +60,13 @@ function parseFangjiaHTML(html) {
   };
 
   // Extract resale average price
-  const resaleMatch = html.match(/二月二手房参考均价[\s\S]*?<span>\s*(\d[\d,]*)\s*<\/span>\s*元\/平/);
+  const resaleMatch = html.match(/二手房参考均价[\s\S]*?<span>\s*(\d[\d,]*)\s*<\/span>\s*元\/平/);
   if (resaleMatch) {
     data.metrics.resale.avgPrice = parsePrice(resaleMatch[1]);
   }
 
-  // Extract new home average price and change
-  const newMatch = html.match(/二月新房参考均价[\s\S]*?<span>(\d[\d,]*)<\/span>\s*元\/平[\s\S]*?比上月(下跌|上涨)(\d+\.?\d*)%/);
+  // Extract new home average price and change (updated for new page structure)
+  const newMatch = html.match(/新房参考均价[\s\S]*?<span>(\d[\d,]*)<\/span>\s*元\/平[\s\S]*?比上月(上涨|下跌)\s*(\d+\.?\d*)%/);
   if (newMatch) {
     data.metrics.new.avgPrice = parsePrice(newMatch[1]);
     const change = parseFloat(newMatch[3]);
