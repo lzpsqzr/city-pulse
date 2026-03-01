@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-01T06:50:46.204Z",
+  "updatedAt": "2026-03-01T06:57:42.850Z",
   "city": "上海",
   "metrics": {
     "resale": {
@@ -180,27 +180,16 @@
   "resaleProperties": [
     {
       "community": "水电新村",
-      "title": "水电新村 2室1厅 68.57平",
-      "url": "https://sh.esf.fang.com/chushou/3_432124633.htm",
-      "totalPrice": 230,
-      "unitPrice": 33542,
-      "layout": "2室1厅",
-      "area": 68.57,
+      "title": "水电新村 1室1厅 54.31平",
+      "url": "https://sh.esf.fang.com/chushou/3_432124651.htm",
+      "totalPrice": 195,
+      "unitPrice": 35904,
+      "layout": "1室1厅",
+      "area": 54.31,
       "district": "杨浦",
       "areaName": "新江湾城",
-      "address": "水电新村"
-    },
-    {
-      "community": "新江湾城雍景苑",
-      "title": "新上!一手底价老客户委托!精装修!边套全明!随时可看",
-      "url": "https://sh.esf.fang.com/chushou/3_430070784.htm",
-      "totalPrice": 700,
-      "unitPrice": 51383,
-      "layout": "3室2厅",
-      "area": 136.23,
-      "district": "杨浦",
-      "areaName": "新江湾城",
-      "address": "政悦路500弄"
+      "address": "新江湾城 水电新村",
+      "priority": 1
     },
     {
       "community": "新江湾城时代花园",
@@ -212,19 +201,112 @@
       "area": 86.54,
       "district": "杨浦",
       "areaName": "新江湾城",
-      "address": "殷行路850弄"
+      "address": "新江湾城 殷行路850弄",
+      "priority": 1
     },
     {
-      "community": "合生江湾国际公寓",
-      "title": "合生江湾国际公寓 2室2厅 93.03平",
-      "url": "https://sh.esf.fang.com/chushou/3_432116749.htm",
-      "totalPrice": 655,
-      "unitPrice": 70407,
-      "layout": "2室2厅",
-      "area": 93.03,
-      "district": "杨浦",
-      "areaName": "新江湾城",
-      "address": "政和路999弄"
+      "community": "昌盛苑",
+      "title": "彭浦新村地铁口,独栋全明房型,户型方正生活配套成熟中间楼层。",
+      "url": "https://sh.esf.fang.com/chushou/3_432156147.htm",
+      "totalPrice": 185,
+      "unitPrice": 27979,
+      "layout": "2室1厅",
+      "area": 66.12,
+      "district": "静安",
+      "areaName": "静安全区",
+      "address": "彭浦 曲沃路321弄",
+      "priority": 4
+    },
+    {
+      "community": "保德公寓",
+      "title": "保德公寓 1室1厅 54.56平",
+      "url": "https://sh.esf.fang.com/chushou/3_432144250.htm",
+      "totalPrice": 155,
+      "unitPrice": 28409,
+      "layout": "1室1厅",
+      "area": 54.56,
+      "district": "静安",
+      "areaName": "静安全区",
+      "address": "彭浦 保德路1316弄38-83号",
+      "priority": 4
+    },
+    {
+      "community": "海运小区住宅",
+      "title": "彭浦新出,电梯商品房凤凰楼层,3间朝南,视野好,有钥匙",
+      "url": "https://sh.esf.fang.com/chushou/3_432109493.htm",
+      "totalPrice": 295,
+      "unitPrice": 33008,
+      "layout": "3室1厅",
+      "area": 89.37,
+      "district": "静安",
+      "areaName": "静安全区",
+      "address": "彭浦 场中路2600弄",
+      "priority": 4
+    },
+    {
+      "community": "岭南小区",
+      "title": "岭南小区 2室1厅 52.19平",
+      "url": "https://sh.esf.fang.com/chushou/3_432150974.htm",
+      "totalPrice": 185,
+      "unitPrice": 35447,
+      "layout": "2室1厅",
+      "area": 52.19,
+      "district": "静安",
+      "areaName": "静安全区",
+      "address": "彭浦 岭南路539弄、平顺路550弄",
+      "priority": 4
+    },
+    {
+      "community": "金台三居",
+      "title": "金杨·金台三居·2室·1厅",
+      "url": "https://sh.esf.fang.com/chushou/3_432060075.htm",
+      "totalPrice": 249,
+      "unitPrice": 35709,
+      "layout": "2室1厅",
+      "area": 69.73,
+      "district": "浦东",
+      "areaName": "浦东全区",
+      "address": "金杨 金台三居",
+      "priority": 6
+    },
+    {
+      "community": "彭豪公寓",
+      "title": "普通住宅,一梯两户,双南全明,业主急售,价钱可谈,随时看房",
+      "url": "https://sh.esf.fang.com/chushou/3_432155932.htm",
+      "totalPrice": 240,
+      "unitPrice": 38709,
+      "layout": "2室1厅",
+      "area": 62,
+      "district": "静安",
+      "areaName": "静安全区",
+      "address": "彭浦 临汾路1513弄",
+      "priority": 4
+    },
+    {
+      "community": "三泉公寓",
+      "title": "三泉公寓 2室1厅 78.86平",
+      "url": "https://sh.esf.fang.com/chushou/3_432141120.htm",
+      "totalPrice": 315,
+      "unitPrice": 39944,
+      "layout": "2室1厅",
+      "area": 78.86,
+      "district": "静安",
+      "areaName": "静安全区",
+      "address": "彭浦 三泉路717弄、长临路61弄、三泉路631弄",
+      "priority": 4
+    },
+    {
+      "community": "梅陇十村",
+      "title": "2000年房龄,一梯两户,全明户型,南北通透",
+      "url": "https://sh.esf.fang.com/chushou/3_431959943.htm",
+      "totalPrice": 237,
+      "unitPrice": 39993,
+      "layout": "1室1厅",
+      "area": 59.26,
+      "district": "徐汇",
+      "areaName": "徐汇全区",
+      "address": "华东理工 梅陇十村77-135号",
+      "priority": 3
     }
   ]
 }

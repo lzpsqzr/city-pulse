@@ -179,77 +179,97 @@ function fetchNewProperties() {
   return properties;
 }
 
-// Fetch resale properties from esf.fang.com
+// Fetch resale properties from multiple districts
 function fetchResaleProperties() {
   const properties = [];
   
   try {
-    console.log('   Fetching resale properties (新江湾城, <700万)...');
+    console.log('   Fetching resale properties (新江湾城 + other districts)...');
     
-    // Fetch from 新江湾城 area (杨浦)
-    const html = fetchHTML('https://sh.esf.fang.com/house-a026-b01651/');
+    // Area URLs to fetch (district code, area name, priority)
+    const areas = [
+      { url: 'https://sh.esf.fang.com/house-a026-b01651/', district: '杨浦', area: '新江湾城', priority: 1 },
+      { url: 'https://sh.esf.fang.com/house-a024/', district: '黄浦', area: '黄浦全区', priority: 2 },
+      { url: 'https://sh.esf.fang.com/house-a019/', district: '徐汇', area: '徐汇全区', priority: 3 },
+      { url: 'https://sh.esf.fang.com/house-a021/', district: '静安', area: '静安全区', priority: 4 },
+      { url: 'https://sh.esf.fang.com/house-a020/', district: '长宁', area: '长宁全区', priority: 5 },
+      { url: 'https://sh.esf.fang.com/house-a025/', district: '浦东', area: '浦东全区', priority: 6 }
+    ];
     
-    // Parse property listings - find all <dl class="clearfix"> elements
-    const dlPattern = /<dl class="clearfix[^"]*"[^>]*data-bg="[^"]*"[^>]*>([\s\S]*?)<\/dl>/g;
-    let dlMatch;
-    
-    while ((dlMatch = dlPattern.exec(html)) !== null) {
-      const dlHtml = dlMatch[1];
-      
-      // Extract URL
-      const urlMatch = dlHtml.match(/href="(\/chushou\/3_\d+\.htm)"/);
-      if (!urlMatch) continue;
-      const url = 'https://sh.esf.fang.com' + urlMatch[1];
-      
-      // Extract community name - more flexible pattern
-      const communityMatch = dlHtml.match(/<a target="_blank" href="\/house-xm\d+\/"[^>]*>([^<]+)<\/a>/);
-      if (!communityMatch) continue;
-      const community = communityMatch[1].trim();
-      
-      // Extract title/description
-      const titleMatch = dlHtml.match(/<span class="tit_shop">\s*([^<]+)<\/span>/);
-      const title = titleMatch ? titleMatch[1].trim() : '';
-      
-      // Extract layout and area (e.g., "4室2厅 | 89㎡")
-      const layoutMatch = dlHtml.match(/(\d室\d厅)\s*<i>\|<\/i>\s*([\d.]+)㎡/);
-      if (!layoutMatch) continue;
-      const layout = layoutMatch[1];
-      const area = parseFloat(layoutMatch[2]);
-      
-      // Extract total price
-      const priceMatch = dlHtml.match(/<b>(\d+)<\/b>万/);
-      if (!priceMatch) continue;
-      const totalPrice = parseInt(priceMatch[1]);
-      
-      // Only keep properties under 700万
-      if (totalPrice > PREFERENCES.maxTotalPrice) continue;
-      
-      // Extract unit price
-      const unitPriceMatch = dlHtml.match(/(\d+)元\/㎡/);
-      const unitPrice = unitPriceMatch ? parseInt(unitPriceMatch[1]) : Math.round(totalPrice * 10000 / area);
-      
-      // Extract address
-      const addressMatch = dlHtml.match(/<span>新江湾城\s*([^<]+)<\/span>/);
-      const address = addressMatch ? addressMatch[1].trim() : '';
-      
-      // All properties from this URL are in 新江湾城
-      properties.push({
-        community,
-        title,
-        url,
-        totalPrice,
-        unitPrice,
-        layout,
-        area,
-        district: '杨浦',
-        areaName: '新江湾城',
-        address: address || '新江湾城'
-      });
-      
-      if (properties.length >= 20) break; // Limit to 20 properties
+    for (const areaInfo of areas) {
+      try {
+        const html = fetchHTML(areaInfo.url);
+        
+        // Parse property listings - find all <dl class="clearfix"> elements
+        const dlPattern = /<dl class="clearfix[^"]*"[^>]*data-bg="[^"]*"[^>]*>([\s\S]*?)<\/dl>/g;
+        let dlMatch;
+        let areaCount = 0;
+        
+        while ((dlMatch = dlPattern.exec(html)) !== null) {
+          const dlHtml = dlMatch[1];
+          
+          // Extract URL
+          const urlMatch = dlHtml.match(/href="(\/chushou\/3_\d+\.htm)"/);
+          if (!urlMatch) continue;
+          const url = 'https://sh.esf.fang.com' + urlMatch[1];
+          
+          // Extract community name - more flexible pattern
+          const communityMatch = dlHtml.match(/<a target="_blank" href="\/house-xm\d+\/"[^>]*>([^<]+)<\/a>/);
+          if (!communityMatch) continue;
+          const community = communityMatch[1].trim();
+          
+          // Extract title/description
+          const titleMatch = dlHtml.match(/<span class="tit_shop">\s*([^<]+)<\/span>/);
+          const title = titleMatch ? titleMatch[1].trim() : '';
+          
+          // Extract layout and area (e.g., "4室2厅 | 89㎡")
+          const layoutMatch = dlHtml.match(/(\d室\d厅)\s*<i>\|<\/i>\s*([\d.]+)㎡/);
+          if (!layoutMatch) continue;
+          const layout = layoutMatch[1];
+          const areaSize = parseFloat(layoutMatch[2]);
+          
+          // Extract total price
+          const priceMatch = dlHtml.match(/<b>(\d+)<\/b>万/);
+          if (!priceMatch) continue;
+          const totalPrice = parseInt(priceMatch[1]);
+          
+          // Only keep properties under 700万
+          if (totalPrice > PREFERENCES.maxTotalPrice) continue;
+          
+          // Extract unit price
+          const unitPriceMatch = dlHtml.match(/(\d+)元\/㎡/);
+          const unitPrice = unitPriceMatch ? parseInt(unitPriceMatch[1]) : Math.round(totalPrice * 10000 / areaSize);
+          
+          // Extract address
+          const addressMatch = dlHtml.match(/<span>([^<]+)<\/span>\s*<\/p>[\s\S]*?<dd class="price_right">/);
+          const address = addressMatch ? addressMatch[1].trim() : '';
+          
+          properties.push({
+            community,
+            title,
+            url,
+            totalPrice,
+            unitPrice,
+            layout,
+            area: areaSize,
+            district: areaInfo.district,
+            areaName: areaInfo.area,
+            address,
+            priority: areaInfo.priority
+          });
+          
+          areaCount++;
+          if (areaCount >= 8) break; // Limit per area
+        }
+        
+        console.log(`   ${areaInfo.area}: ${areaCount} properties`);
+        
+      } catch (e) {
+        console.log(`   ${areaInfo.area}: failed (${e.message})`);
+      }
     }
     
-    console.log(`   Found ${properties.length} resale properties under ${PREFERENCES.maxTotalPrice}万\n`);
+    console.log(`   Total: ${properties.length} resale properties under ${PREFERENCES.maxTotalPrice}万\n`);
     
   } catch (error) {
     console.error(`   ⚠️ Failed to fetch resale properties: ${error.message}`);
@@ -299,11 +319,24 @@ function selectBestProperties(properties) {
     .map(({ score, ...p }) => p);
 }
 
-// Select best resale properties (sort by price, prefer lower unit price)
+// Select best resale properties: prioritize 新江湾城 (2 units), then add other areas
 function selectBestResaleProperties(properties) {
-  return properties
-    .sort((a, b) => a.unitPrice - b.unitPrice) // Lower unit price first (better value)
+  // Separate 新江湾城 properties and others
+  const xinjiangwan = properties.filter(p => p.areaName === '新江湾城');
+  const others = properties.filter(p => p.areaName !== '新江湾城');
+  
+  // Select top 2 from 新江湾城 (sorted by unit price - better value)
+  const selectedXJW = xinjiangwan
+    .sort((a, b) => a.unitPrice - b.unitPrice)
+    .slice(0, 2);
+  
+  // Select top properties from other areas (sorted by unit price)
+  const selectedOthers = others
+    .sort((a, b) => a.unitPrice - b.unitPrice)
     .slice(0, 8);
+  
+  // Combine: 新江湾城 first, then others
+  return [...selectedXJW, ...selectedOthers];
 }
 
 // Main function
