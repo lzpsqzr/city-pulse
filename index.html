@@ -121,13 +121,13 @@
 
     <div class="metrics-grid">
       <div class="metric-card">
-        <h3>二月二手房参考均价</h3>
+        <h3 id="resaleTitle">二手房参考均价</h3>
         <span class="metric-value" id="resalePrice">--</span>
         <span class="metric-unit">元/㎡</span>
         <div class="metric-change" id="resaleChange"></div>
       </div>
       <div class="metric-card">
-        <h3>二月新房参考均价</h3>
+        <h3 id="newTitle">新房参考均价</h3>
         <span class="metric-value" id="newPrice">--</span>
         <span class="metric-unit">元/㎡</span>
         <div class="metric-change" id="newChange"></div>
@@ -188,6 +188,14 @@
         // Update time
         document.getElementById('updateTime').textContent = 
           `更新于 ${new Date(data.updatedAt).toLocaleString('zh-CN')}`;
+
+        // Update month labels
+        const updateDate = new Date(data.updatedAt);
+        const monthNames = ['一月', '二月', '三月', '四月', '五月', '六月', 
+                            '七月', '八月', '九月', '十月', '十一月', '十二月'];
+        const monthName = monthNames[updateDate.getMonth()];
+        document.getElementById('resaleTitle').textContent = `${monthName}二手房参考均价`;
+        document.getElementById('newTitle').textContent = `${monthName}新房参考均价`;
 
         // Update metrics
         document.getElementById('resalePrice').textContent = 
