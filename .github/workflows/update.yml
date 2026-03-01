@@ -29,7 +29,7 @@ jobs:
       - name: Update history index
         run: |
           cd data/history
-          ls -1 *.json 2>/dev/null | sort > ../history-index.txt || echo "" > ../history-index.txt
+          ls -1 *.json 2>/dev/null | grep -v index.json | sort > ../history-index.txt || echo "" > ../history-index.txt
           cd ..
           if [ -s history-index.txt ]; then
             sed -i 's/^/"/' history-index.txt
