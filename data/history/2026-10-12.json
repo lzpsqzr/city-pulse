@@ -1,0 +1,312 @@
+{
+  "updatedAt": "2026-10-12T08:22:25.846Z",
+  "city": "上海",
+  "metrics": {
+    "resale": {
+      "avgPrice": 51624,
+      "unit": "元/平米",
+      "change": 0
+    },
+    "new": {
+      "avgPrice": 76133,
+      "unit": "元/平米",
+      "change": -0.31
+    }
+  },
+  "districts": [
+    {
+      "name": "黄浦",
+      "price": 99268,
+      "change": 0
+    },
+    {
+      "name": "徐汇",
+      "price": 92688,
+      "change": 0.02
+    },
+    {
+      "name": "静安",
+      "price": 73405,
+      "change": 0
+    },
+    {
+      "name": "长宁",
+      "price": 72875,
+      "change": 0
+    },
+    {
+      "name": "虹口",
+      "price": 60133,
+      "change": 0
+    },
+    {
+      "name": "普陀",
+      "price": 56759,
+      "change": 0
+    },
+    {
+      "name": "杨浦",
+      "price": 55478,
+      "change": 0
+    },
+    {
+      "name": "闵行",
+      "price": 49417,
+      "change": 0
+    },
+    {
+      "name": "浦东",
+      "price": 49183,
+      "change": -0.02
+    },
+    {
+      "name": "青浦",
+      "price": 36203,
+      "change": 0
+    }
+  ],
+  "newProperties": [
+    {
+      "name": "保利·都汇和煦",
+      "url": "https://sh.newhouse.fang.com/loupan/1210222840.htm",
+      "district": "闵行",
+      "ringLocation": "外环以外",
+      "address": "闵行东至都庄路,南至01-22a-07地块(近六磊塘),西至01-22a-07地块,北至01-22a-0",
+      "unitPrice": 68498,
+      "totalPrice": 671,
+      "layout": "三居/ 四居 —98~140平米",
+      "status": "在售"
+    },
+    {
+      "name": "保利|建发·印象青城",
+      "url": "https://sh.newhouse.fang.com/loupan/1210199222.htm",
+      "district": "青浦",
+      "ringLocation": "外环以外",
+      "address": "青浦城中北路与盈秀路交汇处",
+      "unitPrice": 49896,
+      "totalPrice": 469,
+      "layout": "三居/ 四居 —94~185平米",
+      "status": "在售"
+    },
+    {
+      "name": "保利·光合上城/跃城",
+      "url": "https://sh.newhouse.fang.com/loupan/1210193876.htm",
+      "district": "闵行",
+      "ringLocation": "外环以外",
+      "address": "闵行兰莲路168弄",
+      "unitPrice": 69900,
+      "totalPrice": 600,
+      "layout": "三居/ 四居 —93~143平米",
+      "status": "在售"
+    },
+    {
+      "name": "保利·珺园",
+      "url": "https://sh.newhouse.fang.com/loupan/1210223476.htm",
+      "district": "杨浦",
+      "ringLocation": "中外环间",
+      "address": "杨浦江湾城路和国秀路交汇处",
+      "unitPrice": 123082,
+      "totalPrice": 1292,
+      "layout": "三居/ 四居 —105~288平米",
+      "status": "在售"
+    },
+    {
+      "name": "中建壹品·外滩元境二期",
+      "url": "https://sh.newhouse.fang.com/loupan/1210223978.htm",
+      "district": "杨浦",
+      "ringLocation": "中内环间",
+      "address": "杨浦东依奎文路、西至规划三星南路、南邻周家牌路,北至杭州路",
+      "unitPrice": 132332,
+      "totalPrice": 900,
+      "layout": "一居/ 二居/ 三居/ 四居 —68~174平米",
+      "status": "在售"
+    },
+    {
+      "name": "建发海宸",
+      "url": "https://sh.newhouse.fang.com/loupan/1210220086.htm",
+      "district": "杨浦",
+      "ringLocation": "中外环间",
+      "address": "杨浦江湾城路与殷高东路交汇处",
+      "unitPrice": 130517,
+      "totalPrice": 1370,
+      "layout": "三居/ 四居 —105~235平米",
+      "status": "在售"
+    },
+    {
+      "name": "保利·外滩曜",
+      "url": "https://sh.newhouse.fang.com/loupan/1210222862.htm",
+      "district": "杨浦",
+      "ringLocation": "内环以内",
+      "address": "杨浦惠民路与许昌路交叉口",
+      "unitPrice": 145258,
+      "totalPrice": 1670,
+      "layout": "三居/ 四居 —115~161平米",
+      "status": "在售"
+    },
+    {
+      "name": "保利外滩启PARK77",
+      "url": "https://sh.newhouse.fang.com/loupan/1210207574.htm",
+      "district": "杨浦",
+      "ringLocation": "内环以内",
+      "address": "杨浦长阳路江浦路交叉口(近江浦公园站)",
+      "unitPrice": 135500,
+      "totalPrice": 1136,
+      "layout": "三居/ 四居 —100~137平米",
+      "status": "在售"
+    },
+    {
+      "name": "金茂·满誉",
+      "url": "https://sh.newhouse.fang.com/loupan/1210223526.htm",
+      "district": "宝山",
+      "ringLocation": "中外环间",
+      "address": "宝山南蕰藻路和长临路交叉口",
+      "unitPrice": 70000,
+      "totalPrice": 784,
+      "layout": "三居/ 四居 —112~146平米",
+      "status": "在售"
+    },
+    {
+      "name": "绿城·黄浦ONE",
+      "url": "https://sh.newhouse.fang.com/loupan/1210223100.htm",
+      "district": "黄浦",
+      "ringLocation": "内环以内",
+      "address": "黄浦东至南车站路、西至东方苑、南至丽园路规划绿地、北至陆家浜路",
+      "unitPrice": 171000,
+      "totalPrice": 2610,
+      "layout": "三居/ 四居 —155~193平米",
+      "status": "在售"
+    }
+  ],
+  "resaleProperties": [
+    {
+      "community": "同济欣苑",
+      "title": "同济欣苑 财大附近 双轨交汇 一梯两户 看房有钥匙",
+      "url": "https://sh.esf.fang.com/chushou/3_431036770.htm",
+      "totalPrice": 450,
+      "unitPrice": 44776,
+      "layout": "3室2厅",
+      "area": 100.5,
+      "district": "杨浦",
+      "areaName": "新江湾城",
+      "address": "新江湾城 同济欣苑",
+      "priority": 1
+    },
+    {
+      "community": "政立苑",
+      "title": "新上!一手底价老客户委托!精装修!边套全明!随时可看",
+      "url": "https://sh.esf.fang.com/chushou/3_432368443.htm",
+      "totalPrice": 600,
+      "unitPrice": 47475,
+      "layout": "3室2厅",
+      "area": 126.38,
+      "district": "杨浦",
+      "areaName": "新江湾城",
+      "address": "新江湾城 政立路639弄",
+      "priority": 1
+    },
+    {
+      "community": "阳曲路570弄小区",
+      "title": "阳曲路570弄小区 43平2居 南北向简装修",
+      "url": "https://sh.esf.fang.com/chushou/3_423387041.htm",
+      "totalPrice": 129,
+      "unitPrice": 29923,
+      "layout": "2室1厅",
+      "area": 43.11,
+      "district": "静安",
+      "areaName": "静安全区",
+      "address": "彭浦 阳曲路570弄",
+      "priority": 4
+    },
+    {
+      "community": "新泾二村",
+      "title": "北新泾零 中间楼层 南北通透 采光无遮挡 有钥匙看房方便",
+      "url": "https://sh.esf.fang.com/chushou/3_511308830.htm",
+      "totalPrice": 135,
+      "unitPrice": 36486,
+      "layout": "1室1厅",
+      "area": 37,
+      "district": "长宁",
+      "areaName": "长宁全区",
+      "address": "北新泾 北渔路4号",
+      "priority": 5
+    },
+    {
+      "community": "金杨新村六街坊",
+      "title": "位置好,大三房。可直接拎包入住,书包未用,带固定车位,诚售!",
+      "url": "https://sh.esf.fang.com/chushou/3_431808573.htm",
+      "totalPrice": 260,
+      "unitPrice": 37021,
+      "layout": "3室1厅",
+      "area": 70.23,
+      "district": "浦东",
+      "areaName": "浦东全区",
+      "address": "金杨 灵山路2000弄",
+      "priority": 6
+    },
+    {
+      "community": "新泾一村",
+      "title": "全南户型,小区中心位置,带露台,中式风格家电齐全",
+      "url": "https://sh.esf.fang.com/chushou/3_432116574.htm",
+      "totalPrice": 260,
+      "unitPrice": 43355,
+      "layout": "2室1厅",
+      "area": 59.97,
+      "district": "长宁",
+      "areaName": "长宁全区",
+      "address": "北新泾 新泾一村54-152号",
+      "priority": 5
+    },
+    {
+      "community": "金杨新村四街坊",
+      "title": "【甄选】买致远就找【马海洋】,从业7年/用青龙刀砍价!",
+      "url": "https://sh.esf.fang.com/chushou/3_432300075.htm",
+      "totalPrice": 178,
+      "unitPrice": 43616,
+      "layout": "1室1厅",
+      "area": 40.81,
+      "district": "浦东",
+      "areaName": "浦东全区",
+      "address": "金杨 金杨新村四街坊",
+      "priority": 6
+    },
+    {
+      "community": "金杨新村四街坊",
+      "title": "楼层好+户型好+诚意卖+小区位置佳",
+      "url": "https://sh.esf.fang.com/chushou/3_431808594.htm",
+      "totalPrice": 200,
+      "unitPrice": 45055,
+      "layout": "1室1厅",
+      "area": 44.39,
+      "district": "浦东",
+      "areaName": "浦东全区",
+      "address": "金杨 金杨新村四街坊",
+      "priority": 6
+    },
+    {
+      "community": "富邑华庭",
+      "title": "富邑华庭 2室2厅 114.99平",
+      "url": "https://sh.esf.fang.com/chushou/3_432438183.htm",
+      "totalPrice": 528,
+      "unitPrice": 45917,
+      "layout": "2室2厅",
+      "area": 114.99,
+      "district": "静安",
+      "areaName": "静安全区",
+      "address": "西藏北路 宝昌路550弄",
+      "priority": 4
+    },
+    {
+      "community": "金杨新村四街坊",
+      "title": "新上好房,致远可用,满五,中间楼层,房价可谈,看房有钥匙",
+      "url": "https://sh.esf.fang.com/chushou/3_431808597.htm",
+      "totalPrice": 205,
+      "unitPrice": 46088,
+      "layout": "1室1厅",
+      "area": 44.48,
+      "district": "浦东",
+      "areaName": "浦东全区",
+      "address": "金杨 金杨新村四街坊",
+      "priority": 6
+    }
+  ]
+}
