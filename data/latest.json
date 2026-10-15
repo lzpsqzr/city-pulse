@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-10-14T06:56:29.766Z",
+  "updatedAt": "2026-10-15T06:48:47.222Z",
   "city": "上海",
   "metrics": {
     "resale": {
       "avgPrice": 51624,
       "unit": "元/平米",
-      "change": null
+      "change": 0
     },
     "new": {
       "avgPrice": 76133,
@@ -179,22 +179,9 @@
   ],
   "resaleProperties": [
     {
-      "community": "同济欣苑",
-      "title": "地铁口,南北通格局,不临马路,采光无遮挡诚意出售",
-      "url": "https://sh.esf.fang.com/chushou/3_511897291.htm",
-      "totalPrice": 350,
-      "unitPrice": 35407,
-      "layout": "2室2厅",
-      "area": 98.85,
-      "district": "杨浦",
-      "areaName": "新江湾城",
-      "address": "新江湾城 同济欣苑",
-      "priority": 1
-    },
-    {
       "community": "涵碧景苑",
       "title": "大甩卖!大甩卖!飞机户型3房+带产权车位+得房率高+看房方便",
-      "url": "https://sh.esf.fang.com/chushou/3_511945539.htm",
+      "url": "https://sh.esf.fang.com/chushou/3_431426777.htm",
       "totalPrice": 500,
       "unitPrice": 39035,
       "layout": "3室2厅",
@@ -205,17 +192,17 @@
       "priority": 1
     },
     {
-      "community": "阳曲路570弄小区",
-      "title": "阳曲路570弄小区 43平2居 南北向简装修",
-      "url": "https://sh.esf.fang.com/chushou/3_423387041.htm",
-      "totalPrice": 129,
-      "unitPrice": 29923,
-      "layout": "2室1厅",
-      "area": 43.11,
-      "district": "静安",
-      "areaName": "静安全区",
-      "address": "彭浦 阳曲路570弄",
-      "priority": 4
+      "community": "正文花园二期",
+      "title": "五角场+两梯两户+精装修+双地铁+品质小区+得房率高",
+      "url": "https://sh.esf.fang.com/chushou/3_510962255.htm",
+      "totalPrice": 630,
+      "unitPrice": 43505,
+      "layout": "3室2厅",
+      "area": 144.81,
+      "district": "杨浦",
+      "areaName": "新江湾城",
+      "address": "新江湾城 政立路1585弄",
+      "priority": 1
     },
     {
       "community": "保德公寓",
@@ -257,26 +244,26 @@
       "priority": 5
     },
     {
-      "community": "金杨新村四街坊",
-      "title": "【甄选】买致远就找【马海洋】,从业7年/用青龙刀砍价!",
-      "url": "https://sh.esf.fang.com/chushou/3_432300072.htm",
-      "totalPrice": 189,
-      "unitPrice": 37626,
+      "community": "金桥酒店公寓",
+      "title": "买房找【马海洋】,用青龙偃月刀帮您砍价,砍不下来您砍我!!!",
+      "url": "https://sh.esf.fang.com/chushou/3_432300079.htm",
+      "totalPrice": 258,
+      "unitPrice": 39686,
       "layout": "2室1厅",
-      "area": 50.23,
+      "area": 65.01,
       "district": "浦东",
       "areaName": "浦东全区",
-      "address": "金杨 金杨新村四街坊",
+      "address": "碧云 红枫路108弄",
       "priority": 6
     },
     {
       "community": "金杨新村四街坊",
-      "title": "【甄选】买致远就找【马海洋】,从业7年/用青龙刀砍价!",
-      "url": "https://sh.esf.fang.com/chushou/3_431808617.htm",
-      "totalPrice": 180,
-      "unitPrice": 43763,
+      "title": "楼层好+户型好+诚意卖+小区位置佳",
+      "url": "https://sh.esf.fang.com/chushou/3_431808594.htm",
+      "totalPrice": 200,
+      "unitPrice": 45055,
       "layout": "1室1厅",
-      "area": 41.13,
+      "area": 44.39,
       "district": "浦东",
       "areaName": "浦东全区",
       "address": "金杨 金杨新村四街坊",
@@ -296,16 +283,29 @@
       "priority": 4
     },
     {
-      "community": "金杨新村六街坊",
-      "title": "低楼层 致远书包未用 送花园 可面谈",
-      "url": "https://sh.esf.fang.com/chushou/3_431808574.htm",
-      "totalPrice": 180,
-      "unitPrice": 46308,
+      "community": "金杨新村四街坊",
+      "title": "新上好房,致远可用,满五,中间楼层,房价可谈,看房有钥匙",
+      "url": "https://sh.esf.fang.com/chushou/3_431808597.htm",
+      "totalPrice": 205,
+      "unitPrice": 46088,
       "layout": "1室1厅",
-      "area": 38.87,
+      "area": 44.48,
       "district": "浦东",
       "areaName": "浦东全区",
-      "address": "金杨 灵山路2000弄",
+      "address": "金杨 金杨新村四街坊",
+      "priority": 6
+    },
+    {
+      "community": "金桥酒店公寓",
+      "title": "上实1-9 找马海洋,用青龙偃月刀帮您砍价,砍不下来您砍我!",
+      "url": "https://sh.esf.fang.com/chushou/3_432300084.htm",
+      "totalPrice": 220,
+      "unitPrice": 46629,
+      "layout": "1室1厅",
+      "area": 47.18,
+      "district": "浦东",
+      "areaName": "浦东全区",
+      "address": "碧云 红枫路108弄",
       "priority": 6
     }
   ]
