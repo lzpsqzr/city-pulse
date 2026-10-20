@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-19T07:09:57.900Z",
+  "updatedAt": "2026-10-20T06:56:53.020Z",
   "city": "上海",
   "metrics": {
     "resale": {
@@ -133,14 +133,14 @@
       "status": "在售"
     },
     {
-      "name": "中建壹品·外滩元境二期",
-      "url": "https://sh.newhouse.fang.com/loupan/1210223978.htm",
+      "name": "翎翠滨江",
+      "url": "https://sh.newhouse.fang.com/loupan/1210202066.htm",
       "district": "杨浦",
       "ringLocation": "中内环间",
-      "address": "杨浦东依奎文路、西至规划三星南路、南邻周家牌路,北至杭州路",
-      "unitPrice": 132332,
-      "totalPrice": 900,
-      "layout": "一居/ 二居/ 三居/ 四居 —68~174平米",
+      "address": "杨浦杨浦公园南侧",
+      "unitPrice": 109341,
+      "totalPrice": 970,
+      "layout": "三居/ 四居 —105~143平米",
       "status": "在售"
     },
     {
@@ -166,31 +166,18 @@
       "status": "在售"
     },
     {
-      "name": "保利·虹桥和著丨璟岸",
-      "url": "https://sh.newhouse.fang.com/loupan/1210223638.htm",
-      "district": "嘉定",
-      "ringLocation": "外环以外",
-      "address": "嘉定曹安公路14号线封浜地铁站3号口往南约350米昌瑞路与骏达路交口",
-      "unitPrice": 55400,
+      "name": "新弘·北京道",
+      "url": "https://sh.newhouse.fang.com/loupan/1210201988.htm",
+      "district": "黄浦",
+      "ringLocation": "内环以内",
+      "address": "黄浦新昌路211号(近北京西路)",
+      "unitPrice": 181000,
       "totalPrice": null,
-      "layout": "三居 —95~108平米",
+      "layout": "三居/ 四居 —266~348平米",
       "status": "在售"
     }
   ],
   "resaleProperties": [
-    {
-      "community": "新江湾城时代花园",
-      "title": "看这边!时代花园新上两居室,随时用,看房方便",
-      "url": "https://sh.esf.fang.com/chushou/3_512425165.htm",
-      "totalPrice": 360,
-      "unitPrice": 40923,
-      "layout": "2室2厅",
-      "area": 87.97,
-      "district": "杨浦",
-      "areaName": "新江湾城",
-      "address": "新江湾城 殷行路850弄",
-      "priority": 1
-    },
     {
       "community": "合生江湾国际公寓",
       "title": "合生新上三期高区大两房,有产权车位,地铁10号线",
@@ -202,6 +189,19 @@
       "district": "杨浦",
       "areaName": "新江湾城",
       "address": "新江湾城 政和路999弄",
+      "priority": 1
+    },
+    {
+      "community": "新江湾城雍景苑",
+      "title": "雍景苑景观南北直通2房+户型方正一梯两户得房率80%!",
+      "url": "https://sh.esf.fang.com/chushou/3_512440743.htm",
+      "totalPrice": 460,
+      "unitPrice": 44599,
+      "layout": "2室2厅",
+      "area": 103.14,
+      "district": "杨浦",
+      "areaName": "新江湾城",
+      "address": "新江湾城 政悦路500弄",
       "priority": 1
     },
     {
@@ -244,19 +244,6 @@
       "priority": 4
     },
     {
-      "community": "金杨新村六街坊",
-      "title": "金杨·金杨六街坊·3室·2厅",
-      "url": "https://sh.esf.fang.com/chushou/3_431808568.htm",
-      "totalPrice": 300,
-      "unitPrice": 36001,
-      "layout": "3室2厅",
-      "area": 83.33,
-      "district": "浦东",
-      "areaName": "浦东全区",
-      "address": "金杨 灵山路2000弄",
-      "priority": 6
-    },
-    {
       "community": "新泾二村",
       "title": "北新泾零 中间楼层 南北通透 采光无遮挡 有钥匙看房方便",
       "url": "https://sh.esf.fang.com/chushou/3_511308830.htm",
@@ -270,29 +257,42 @@
       "priority": 5
     },
     {
-      "community": "金杨新村四街坊",
-      "title": "【甄选】买致远就找【马海洋】,从业7年/用青龙刀砍价!",
-      "url": "https://sh.esf.fang.com/chushou/3_432300072.htm",
-      "totalPrice": 189,
-      "unitPrice": 37626,
-      "layout": "2室1厅",
-      "area": 50.23,
+      "community": "蝶恋苑",
+      "title": "买一次附带一层,诚心出售,看房提前预约,带露台,南北通透",
+      "url": "https://sh.esf.fang.com/chushou/3_432300355.htm",
+      "totalPrice": 399,
+      "unitPrice": 42501,
+      "layout": "2室2厅",
+      "area": 93.88,
       "district": "浦东",
       "areaName": "浦东全区",
-      "address": "金杨 金杨新村四街坊",
+      "address": "金杨 栖山路1899弄",
       "priority": 6
     },
     {
-      "community": "德乐苑",
-      "title": "买房找马海洋,用青龙偃月刀帮您砍价,一梯两户南北通透,",
-      "url": "https://sh.esf.fang.com/chushou/3_432300415.htm",
-      "totalPrice": 400,
-      "unitPrice": 40229,
+      "community": "住友名人苑",
+      "title": "住友名人苑 98.76平2居 南北向精装修 拎包入住",
+      "url": "https://sh.esf.fang.com/chushou/3_432300250.htm",
+      "totalPrice": 420,
+      "unitPrice": 42527,
       "layout": "2室2厅",
-      "area": 99.43,
+      "area": 98.76,
       "district": "浦东",
       "areaName": "浦东全区",
-      "address": "金杨 博山东路136弄",
+      "address": "金杨 张杨路2999弄",
+      "priority": 6
+    },
+    {
+      "community": "金杨新村四街坊",
+      "title": "【甄选】买致远就找【马海洋】,从业7年/用青龙刀砍价!",
+      "url": "https://sh.esf.fang.com/chushou/3_431808617.htm",
+      "totalPrice": 180,
+      "unitPrice": 43763,
+      "layout": "1室1厅",
+      "area": 41.13,
+      "district": "浦东",
+      "areaName": "浦东全区",
+      "address": "金杨 金杨新村四街坊",
       "priority": 6
     },
     {
