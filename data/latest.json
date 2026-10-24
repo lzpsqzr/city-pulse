@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-23T06:47:53.159Z",
+  "updatedAt": "2026-10-24T06:43:57.790Z",
   "city": "上海",
   "metrics": {
     "resale": {
@@ -78,6 +78,17 @@
       "status": "在售"
     },
     {
+      "name": "保利·虹桥和著丨璟岸",
+      "url": "https://sh.newhouse.fang.com/loupan/1210223638.htm",
+      "district": "嘉定",
+      "ringLocation": "外环以外",
+      "address": "嘉定曹安公路14号线封浜地铁站3号口往南约350米昌瑞路与骏达路交口",
+      "unitPrice": 55400,
+      "totalPrice": 526,
+      "layout": "三居 —95~108平米",
+      "status": "在售"
+    },
+    {
       "name": "保利|建发·印象青城",
       "url": "https://sh.newhouse.fang.com/loupan/1210199222.htm",
       "district": "青浦",
@@ -139,7 +150,7 @@
       "ringLocation": "中外环间",
       "address": "宝山南蕰藻路和长临路交叉口",
       "unitPrice": 72760,
-      "totalPrice": null,
+      "totalPrice": 815,
       "layout": "三居/ 四居 —112~146平米",
       "status": "在售"
     },
@@ -161,19 +172,8 @@
       "ringLocation": "内环以内",
       "address": "黄浦新昌路211号(近北京西路)",
       "unitPrice": 181000,
-      "totalPrice": null,
+      "totalPrice": 4815,
       "layout": "三居/ 四居 —266~348平米",
-      "status": "在售"
-    },
-    {
-      "name": "保利·虹桥和著丨璟岸",
-      "url": "https://sh.newhouse.fang.com/loupan/1210223638.htm",
-      "district": "嘉定",
-      "ringLocation": "外环以外",
-      "address": "嘉定曹安公路14号线封浜地铁站3号口往南约350米昌瑞路与骏达路交口",
-      "unitPrice": 55400,
-      "totalPrice": null,
-      "layout": "三居 —95~108平米",
       "status": "在售"
     }
   ],
