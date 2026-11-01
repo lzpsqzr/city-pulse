@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-31T07:49:55.050Z",
+  "updatedAt": "2026-11-01T08:30:18.610Z",
   "city": "上海",
   "metrics": {
     "resale": {
@@ -8,9 +8,9 @@
       "change": 0
     },
     "new": {
-      "avgPrice": 76133,
+      "avgPrice": 76015,
       "unit": "元/平米",
-      "change": -0.31
+      "change": -0.15
     }
   },
   "districts": [
@@ -100,17 +100,6 @@
       "status": "在售"
     },
     {
-      "name": "保利·外滩曜",
-      "url": "https://sh.newhouse.fang.com/loupan/1210222862.htm",
-      "district": "杨浦",
-      "ringLocation": "内环以内",
-      "address": "杨浦惠民路与许昌路交叉口",
-      "unitPrice": 145258,
-      "totalPrice": 1670,
-      "layout": "三居/ 四居 —115~161平米",
-      "status": "在售"
-    },
-    {
       "name": "中建壹品·外滩元境二期",
       "url": "https://sh.newhouse.fang.com/loupan/1210223978.htm",
       "district": "杨浦",
@@ -119,17 +108,6 @@
       "unitPrice": 132332,
       "totalPrice": 900,
       "layout": "一居/ 二居/ 三居/ 四居 —68~174平米",
-      "status": "在售"
-    },
-    {
-      "name": "保利外滩启PARK77",
-      "url": "https://sh.newhouse.fang.com/loupan/1210207574.htm",
-      "district": "杨浦",
-      "ringLocation": "内环以内",
-      "address": "杨浦长阳路江浦路交叉口(近江浦公园站)",
-      "unitPrice": 135500,
-      "totalPrice": 1136,
-      "layout": "三居/ 四居 —100~137平米",
       "status": "在售"
     },
     {
@@ -174,6 +152,28 @@
       "unitPrice": 70500,
       "totalPrice": 776,
       "layout": "三居/ 四居 —110~180平米",
+      "status": "在售"
+    },
+    {
+      "name": "招商·上中隐翠",
+      "url": "https://sh.newhouse.fang.com/loupan/1210224134.htm",
+      "district": "徐汇",
+      "ringLocation": "中内环间",
+      "address": "徐汇龙吴路百色路交汇处",
+      "unitPrice": 139000,
+      "totalPrice": 1696,
+      "layout": "四居 —122~190平米",
+      "status": "在售"
+    },
+    {
+      "name": "新弘·北京道",
+      "url": "https://sh.newhouse.fang.com/loupan/1210201988.htm",
+      "district": "黄浦",
+      "ringLocation": "内环以内",
+      "address": "黄浦新昌路211号(近北京西路)",
+      "unitPrice": 181000,
+      "totalPrice": 4815,
+      "layout": "三居/ 四居 —266~348平米",
       "status": "在售"
     }
   ],
