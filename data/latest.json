@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-01T08:30:18.610Z",
+  "updatedAt": "2026-11-02T08:41:34.335Z",
   "city": "上海",
   "metrics": {
     "resale": {
@@ -22,7 +22,7 @@
     {
       "name": "徐汇",
       "price": 92688,
-      "change": 0.02
+      "change": 0
     },
     {
       "name": "静安",
@@ -57,7 +57,7 @@
     {
       "name": "浦东",
       "price": 49183,
-      "change": -0.02
+      "change": 0
     },
     {
       "name": "青浦",
