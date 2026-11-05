@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-04T08:22:34.908Z",
+  "updatedAt": "2026-11-05T08:49:10.537Z",
   "city": "上海",
   "metrics": {
     "resale": {
@@ -16,7 +16,7 @@
   "districts": [
     {
       "name": "黄浦",
-      "price": 99268,
+      "price": 99447,
       "change": 0
     },
     {
@@ -26,32 +26,32 @@
     },
     {
       "name": "静安",
-      "price": 73405,
+      "price": 73564,
       "change": 0
     },
     {
       "name": "长宁",
-      "price": 72875,
+      "price": 73034,
       "change": 0
     },
     {
       "name": "虹口",
-      "price": 60133,
+      "price": 60377,
       "change": 0
     },
     {
       "name": "普陀",
-      "price": 56759,
+      "price": 56845,
       "change": 0
     },
     {
       "name": "杨浦",
-      "price": 55478,
+      "price": 55641,
       "change": 0
     },
     {
       "name": "闵行",
-      "price": 49417,
+      "price": 49619,
       "change": 0
     },
     {
@@ -61,7 +61,7 @@
     },
     {
       "name": "青浦",
-      "price": 36203,
+      "price": 36329,
       "change": 0
     }
   ],
