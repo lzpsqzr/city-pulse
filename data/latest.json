@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-11-09T08:55:02.102Z",
+  "updatedAt": "2026-11-10T09:01:22.823Z",
   "city": "上海",
   "metrics": {
     "resale": {
-      "avgPrice": 51624,
+      "avgPrice": 51636,
       "unit": "元/平米",
-      "change": 0
+      "change": 0.02
     },
     "new": {
       "avgPrice": 76015,
@@ -111,17 +111,6 @@
       "status": "在售"
     },
     {
-      "name": "保利·外滩曜",
-      "url": "https://sh.newhouse.fang.com/loupan/1210222862.htm",
-      "district": "杨浦",
-      "ringLocation": "内环以内",
-      "address": "杨浦惠民路与许昌路交叉口",
-      "unitPrice": 145258,
-      "totalPrice": 1670,
-      "layout": "三居/ 四居 —115~161平米",
-      "status": "在售"
-    },
-    {
       "name": "保利·珺园",
       "url": "https://sh.newhouse.fang.com/loupan/1210223476.htm",
       "district": "杨浦",
@@ -144,6 +133,28 @@
       "status": "在售"
     },
     {
+      "name": "保利·外滩曜",
+      "url": "https://sh.newhouse.fang.com/loupan/1210222862.htm",
+      "district": "杨浦",
+      "ringLocation": "内环以内",
+      "address": "杨浦惠民路与许昌路交叉口",
+      "unitPrice": 145258,
+      "totalPrice": 1670,
+      "layout": "三居/ 四居 —115~161平米",
+      "status": "在售"
+    },
+    {
+      "name": "保利外滩启PARK77",
+      "url": "https://sh.newhouse.fang.com/loupan/1210207574.htm",
+      "district": "杨浦",
+      "ringLocation": "内环以内",
+      "address": "杨浦长阳路江浦路交叉口(近江浦公园站)",
+      "unitPrice": 135500,
+      "totalPrice": 1136,
+      "layout": "三居/ 四居 —100~137平米",
+      "status": "在售"
+    },
+    {
       "name": "建发海宸",
       "url": "https://sh.newhouse.fang.com/loupan/1210220086.htm",
       "district": "杨浦",
@@ -163,17 +174,6 @@
       "unitPrice": 70500,
       "totalPrice": 776,
       "layout": "三居/ 四居 —110~180平米",
-      "status": "在售"
-    },
-    {
-      "name": "中建·玖上琅宸",
-      "url": "https://sh.newhouse.fang.com/loupan/1210202318.htm",
-      "district": "静安",
-      "ringLocation": "中内环间",
-      "address": "静安广中西路199弄",
-      "unitPrice": 164641,
-      "totalPrice": 2107,
-      "layout": "三居/ 四居 —128~280平米",
       "status": "在售"
     }
   ],
