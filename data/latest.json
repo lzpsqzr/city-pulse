@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-11T08:41:38.643Z",
+  "updatedAt": "2026-11-12T09:02:51.697Z",
   "city": "上海",
   "metrics": {
     "resale": {
@@ -166,14 +166,14 @@
       "status": "在售"
     },
     {
-      "name": "中建·玖上琅宸",
-      "url": "https://sh.newhouse.fang.com/loupan/1210202318.htm",
-      "district": "静安",
-      "ringLocation": "中内环间",
-      "address": "静安广中西路199弄",
-      "unitPrice": 164641,
-      "totalPrice": 2107,
-      "layout": "三居/ 四居 —128~280平米",
+      "name": "绿城·黄浦ONE",
+      "url": "https://sh.newhouse.fang.com/loupan/1210223100.htm",
+      "district": "黄浦",
+      "ringLocation": "内环以内",
+      "address": "黄浦东至南车站路、西至东方苑、南至丽园路规划绿地、北至陆家浜路",
+      "unitPrice": 171000,
+      "totalPrice": 2610,
+      "layout": "三居/ 四居 —155~193平米",
       "status": "在售"
     }
   ],
