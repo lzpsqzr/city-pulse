@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-12T09:02:51.697Z",
+  "updatedAt": "2026-11-13T08:57:00.659Z",
   "city": "上海",
   "metrics": {
     "resale": {
@@ -144,17 +144,6 @@
       "status": "在售"
     },
     {
-      "name": "建发海宸",
-      "url": "https://sh.newhouse.fang.com/loupan/1210220086.htm",
-      "district": "杨浦",
-      "ringLocation": "中外环间",
-      "address": "杨浦江湾城路与殷高东路交汇处",
-      "unitPrice": 130517,
-      "totalPrice": 1370,
-      "layout": "三居/ 四居 —105~235平米",
-      "status": "在售"
-    },
-    {
       "name": "森兰万安源",
       "url": "https://sh.newhouse.fang.com/loupan/1210223842.htm",
       "district": "浦东",
@@ -174,6 +163,17 @@
       "unitPrice": 171000,
       "totalPrice": 2610,
       "layout": "三居/ 四居 —155~193平米",
+      "status": "在售"
+    },
+    {
+      "name": "中建·玖上琅宸",
+      "url": "https://sh.newhouse.fang.com/loupan/1210202318.htm",
+      "district": "静安",
+      "ringLocation": "中内环间",
+      "address": "静安广中西路199弄",
+      "unitPrice": 164641,
+      "totalPrice": 2107,
+      "layout": "三居/ 四居 —128~280平米",
       "status": "在售"
     }
   ],
