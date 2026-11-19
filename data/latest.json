@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-18T09:33:53.108Z",
+  "updatedAt": "2026-11-19T09:42:25.477Z",
   "city": "上海",
   "metrics": {
     "resale": {
@@ -122,17 +122,6 @@
       "status": "在售"
     },
     {
-      "name": "保利·外滩曜",
-      "url": "https://sh.newhouse.fang.com/loupan/1210222862.htm",
-      "district": "杨浦",
-      "ringLocation": "内环以内",
-      "address": "杨浦惠民路与许昌路交叉口",
-      "unitPrice": 145258,
-      "totalPrice": 1670,
-      "layout": "三居/ 四居 —115~161平米",
-      "status": "在售"
-    },
-    {
       "name": "中建壹品·外滩元境二期",
       "url": "https://sh.newhouse.fang.com/loupan/1210223978.htm",
       "district": "杨浦",
@@ -141,6 +130,17 @@
       "unitPrice": 132332,
       "totalPrice": 900,
       "layout": "一居/ 二居/ 三居/ 四居 —68~174平米",
+      "status": "在售"
+    },
+    {
+      "name": "保利·外滩曜",
+      "url": "https://sh.newhouse.fang.com/loupan/1210222862.htm",
+      "district": "杨浦",
+      "ringLocation": "内环以内",
+      "address": "杨浦惠民路与许昌路交叉口",
+      "unitPrice": 145258,
+      "totalPrice": 1670,
+      "layout": "三居/ 四居 —115~161平米",
       "status": "在售"
     },
     {
@@ -155,17 +155,6 @@
       "status": "在售"
     },
     {
-      "name": "建发海宸",
-      "url": "https://sh.newhouse.fang.com/loupan/1210220086.htm",
-      "district": "杨浦",
-      "ringLocation": "中外环间",
-      "address": "杨浦江湾城路与殷高东路交汇处",
-      "unitPrice": 130517,
-      "totalPrice": 1370,
-      "layout": "三居/ 四居 —105~235平米",
-      "status": "在售"
-    },
-    {
       "name": "森兰万安源",
       "url": "https://sh.newhouse.fang.com/loupan/1210223842.htm",
       "district": "浦东",
@@ -174,6 +163,17 @@
       "unitPrice": 70500,
       "totalPrice": 776,
       "layout": "三居/ 四居 —110~180平米",
+      "status": "在售"
+    },
+    {
+      "name": "绿城·黄浦ONE",
+      "url": "https://sh.newhouse.fang.com/loupan/1210223100.htm",
+      "district": "黄浦",
+      "ringLocation": "内环以内",
+      "address": "黄浦东至南车站路、西至东方苑、南至丽园路规划绿地、北至陆家浜路",
+      "unitPrice": 171000,
+      "totalPrice": 2610,
+      "layout": "三居/ 四居 —155~193平米",
       "status": "在售"
     }
   ],
