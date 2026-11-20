@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-19T09:42:25.477Z",
+  "updatedAt": "2026-11-20T09:29:40.447Z",
   "city": "上海",
   "metrics": {
     "resale": {
@@ -78,17 +78,6 @@
       "status": "在售"
     },
     {
-      "name": "保利·虹桥和著丨璟岸",
-      "url": "https://sh.newhouse.fang.com/loupan/1210223638.htm",
-      "district": "嘉定",
-      "ringLocation": "外环以外",
-      "address": "嘉定曹安公路14号线封浜地铁站3号口往南约350米昌瑞路与骏达路交口",
-      "unitPrice": 55400,
-      "totalPrice": 526,
-      "layout": "三居 —95~108平米",
-      "status": "在售"
-    },
-    {
       "name": "保利·光合上城/跃城",
       "url": "https://sh.newhouse.fang.com/loupan/1210193876.htm",
       "district": "闵行",
@@ -97,6 +86,17 @@
       "unitPrice": 69900,
       "totalPrice": 600,
       "layout": "三居/ 四居 —93~143平米",
+      "status": "在售"
+    },
+    {
+      "name": "保利|建发·印象青城",
+      "url": "https://sh.newhouse.fang.com/loupan/1210199222.htm",
+      "district": "青浦",
+      "ringLocation": "外环以外",
+      "address": "青浦城中北路与盈秀路交汇处",
+      "unitPrice": 43279,
+      "totalPrice": 455,
+      "layout": "三居/ 四居 —94~185平米",
       "status": "在售"
     },
     {
@@ -155,6 +155,17 @@
       "status": "在售"
     },
     {
+      "name": "建发海宸",
+      "url": "https://sh.newhouse.fang.com/loupan/1210220086.htm",
+      "district": "杨浦",
+      "ringLocation": "中外环间",
+      "address": "杨浦江湾城路与殷高东路交汇处",
+      "unitPrice": 130517,
+      "totalPrice": 1370,
+      "layout": "三居/ 四居 —105~235平米",
+      "status": "在售"
+    },
+    {
       "name": "森兰万安源",
       "url": "https://sh.newhouse.fang.com/loupan/1210223842.htm",
       "district": "浦东",
@@ -163,17 +174,6 @@
       "unitPrice": 70500,
       "totalPrice": 776,
       "layout": "三居/ 四居 —110~180平米",
-      "status": "在售"
-    },
-    {
-      "name": "绿城·黄浦ONE",
-      "url": "https://sh.newhouse.fang.com/loupan/1210223100.htm",
-      "district": "黄浦",
-      "ringLocation": "内环以内",
-      "address": "黄浦东至南车站路、西至东方苑、南至丽园路规划绿地、北至陆家浜路",
-      "unitPrice": 171000,
-      "totalPrice": 2610,
-      "layout": "三居/ 四居 —155~193平米",
       "status": "在售"
     }
   ],
