@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T09:00:54.472Z",
+  "updatedAt": "2026-11-22T09:09:31.862Z",
   "city": "上海",
   "metrics": {
     "resale": {
@@ -122,17 +122,6 @@
       "status": "在售"
     },
     {
-      "name": "中建壹品·外滩元境二期",
-      "url": "https://sh.newhouse.fang.com/loupan/1210223978.htm",
-      "district": "杨浦",
-      "ringLocation": "中内环间",
-      "address": "杨浦东依奎文路、西至规划三星南路、南邻周家牌路,北至杭州路",
-      "unitPrice": 132332,
-      "totalPrice": 900,
-      "layout": "一居/ 二居/ 三居/ 四居 —68~174平米",
-      "status": "在售"
-    },
-    {
       "name": "保利·外滩曜",
       "url": "https://sh.newhouse.fang.com/loupan/1210222862.htm",
       "district": "杨浦",
@@ -141,6 +130,17 @@
       "unitPrice": 145258,
       "totalPrice": 1670,
       "layout": "三居/ 四居 —115~161平米",
+      "status": "在售"
+    },
+    {
+      "name": "中建壹品·外滩元境二期",
+      "url": "https://sh.newhouse.fang.com/loupan/1210223978.htm",
+      "district": "杨浦",
+      "ringLocation": "中内环间",
+      "address": "杨浦东依奎文路、西至规划三星南路、南邻周家牌路,北至杭州路",
+      "unitPrice": 132332,
+      "totalPrice": 900,
+      "layout": "一居/ 二居/ 三居/ 四居 —68~174平米",
       "status": "在售"
     },
     {
