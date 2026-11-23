@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-22T09:09:31.862Z",
+  "updatedAt": "2026-11-23T10:04:39.537Z",
   "city": "上海",
   "metrics": {
     "resale": {
@@ -75,6 +75,17 @@
       "unitPrice": 68498,
       "totalPrice": 671,
       "layout": "三居/ 四居 —98~140平米",
+      "status": "在售"
+    },
+    {
+      "name": "大华·锦樾",
+      "url": "https://sh.newhouse.fang.com/loupan/1210224196.htm",
+      "district": "宝山",
+      "ringLocation": "外环以外",
+      "address": "宝山东至教育路,南至顾新路,西至电台南路,北至顾太路",
+      "unitPrice": 50492,
+      "totalPrice": 555,
+      "layout": "三居 —110~169平米",
       "status": "在售"
     },
     {
@@ -163,17 +174,6 @@
       "unitPrice": 130517,
       "totalPrice": 2334,
       "layout": "三居/ 四居 —105~235平米",
-      "status": "在售"
-    },
-    {
-      "name": "森兰万安源",
-      "url": "https://sh.newhouse.fang.com/loupan/1210223842.htm",
-      "district": "浦东",
-      "ringLocation": "中外环间",
-      "address": "浦东高行镇万安街99弄",
-      "unitPrice": 70500,
-      "totalPrice": 776,
-      "layout": "三居/ 四居 —110~180平米",
       "status": "在售"
     }
   ],
